@@ -12,6 +12,7 @@ import { DonatorQuestComponent } from './donator-quest/donator-quest.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { SidebarModule } from 'ng-sidebar';
 import { MainLoginComponent } from './main-login/main-login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MainLoginComponent } from './main-login/main-login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     SidebarModule.forRoot()
   ],
   providers: [],

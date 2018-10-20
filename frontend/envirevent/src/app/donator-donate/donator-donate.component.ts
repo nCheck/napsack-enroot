@@ -7,33 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonatorDonateComponent implements OnInit {
 
-  public choice: Array<any>;
+  cardboard:Number=0;
+  tetraPack:Number=0;
+  glassBottle:Number=0;
+  plasticBottle:Number=0;
+  selection:Number[]=[];
+  onSubmission():void{
+    this.selection.push(this.tetraPack);
+    this.selection.push(this.cardboard);
+    this.selection.push(this.glassBottle);
+    this.selection.push(this.plasticBottle);
+
+    console.log(this.selection);
+
+  };
 
   constructor() { }
 
   ngOnInit() {
-    this.choice = [
-      {
-         name: 'Glass Bottle',
-         value: 'false'
-      },
-      {
-        name: 'Plastic Bottle',
-        value: 'false'
-      },
-      {
-        name: 'TetraPacks',
-        value: 'false'
-      },
-      {
-        name: 'Card board Box',
-        value: 'false'
-     },
-     {
-       name: 'Wrappers',
-       value: 'false'
-     }
-    ];
+
   }
 
 }
