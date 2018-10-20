@@ -20,6 +20,7 @@ import { CollectorVerifyComponent } from './collector-verify/collector-verify.co
 import { CollectorRequestComponent } from './collector-request/collector-request.component';
 import { CollectorWalletComponent } from './collector-wallet/collector-wallet.component';
 import { NgQrScannerModule } from 'angular2-qrscanner';
+// import * as RX from "rxjs/Observable";
 
 
 @NgModule({
