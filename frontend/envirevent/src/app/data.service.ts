@@ -9,14 +9,18 @@ import {RequestOptions, Request, RequestMethod , Headers} from '@angular/http';
 export class DataService {
   headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   options = { headers: this.headers };
-  constructor(private http: HttpClient) { }
+  constructor(public http: HttpClient) { }
 
-  postDonateData(body:Number[]):void{
-    this.http.post('/api/setMood', body,
-    this.options
-  ).subscribe(
-    dat => console.log(dat)
-  );
-  console.log('posted from data service');
+
+  postDonateData():void{
+    console.log('posted from data service');
+    this.http.post('/api/setMood', this.body,
+    this.options );
+
   }
+
+
+
+
+
 }

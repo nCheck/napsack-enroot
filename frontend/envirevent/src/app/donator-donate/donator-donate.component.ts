@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from './../data.service';
+import { DataService } from '../data.service';
 @Component({
   selector: 'app-donator-donate',
   templateUrl: './donator-donate.component.html',
@@ -16,14 +16,20 @@ export class DonatorDonateComponent implements OnInit {
     this.selection.push(this.tetraPack);
     this.selection.push(this.cardboard);
     this.selection.push(this.glassBottle);
-    this.selection.push(this.plasticBottle);
+    this.selection.push(this.plasticBottle); 
     
     console.log(this.selection);
-    this.data.postDonateData(this.selection);
+    
+    // this.data.postDonateData().subscribe((dat:any)=>{
+    //   dat => console.log(dat);
+    // });
     this.selection=[];
-  };
+  }
 
-  constructor(public data:DataService) { }
+
+  constructor(private data:DataService) { 
+
+  }
 
   ngOnInit() {
 
