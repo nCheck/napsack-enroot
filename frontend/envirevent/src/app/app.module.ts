@@ -20,6 +20,9 @@ import { CollectorVerifyComponent } from './collector-verify/collector-verify.co
 import { CollectorRequestComponent } from './collector-request/collector-request.component';
 import { CollectorWalletComponent } from './collector-wallet/collector-wallet.component';
 import { NgQrScannerModule } from 'angular2-qrscanner';
+import { QRCodeModule } from 'angularx-qrcode';
+import { DonatorQrcodeComponent } from './donator-qrcode/donator-qrcode.component';
+
 // import * as RX from "rxjs/Observable";
 
 
@@ -38,6 +41,7 @@ import { NgQrScannerModule } from 'angular2-qrscanner';
     CollectorVerifyComponent,
     CollectorRequestComponent,
     CollectorWalletComponent,
+    DonatorQrcodeComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,7 @@ import { NgQrScannerModule } from 'angular2-qrscanner';
       apiKey: 'AIzaSyDmk0ZLNenVOm3-bcdIHiMm2nBkSrdKLxw'
     }),
     NgQrScannerModule,
+    QRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

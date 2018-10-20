@@ -16,6 +16,7 @@ import { AgmCoreModule } from '@agm/core';
 import { CollectorVerifyComponent } from './collector-verify/collector-verify.component';
 import { CollectorRequestComponent } from './collector-request/collector-request.component';
 import { CollectorWalletComponent } from './collector-wallet/collector-wallet.component';
+import { DonatorQrcodeComponent } from './donator-qrcode/donator-qrcode.component';
 
 
 export const routes: Routes = [
@@ -60,6 +61,10 @@ export const routes: Routes = [
       {
         path: 'maps',
         component: MapsComponent,
+      },
+      {
+        path: 'complete',
+        component: DonatorQrcodeComponent,
       }
     ]
   },
