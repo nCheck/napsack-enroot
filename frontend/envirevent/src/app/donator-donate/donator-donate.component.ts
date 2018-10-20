@@ -17,9 +17,14 @@ export class DonatorDonateComponent implements OnInit {
     this.selection.push(this.cardboard);
     this.selection.push(this.glassBottle);
     this.selection.push(this.plasticBottle); 
+
     
     console.log(this.selection);
-    
+    console.log(this.data.postDonateData(this.selection));
+    this.data.getDonateData().subscribe((product:any)=>{
+      console.log(product);
+    });
+
     // this.data.postDonateData().subscribe((dat:any)=>{
     //   dat => console.log(dat);
     // });

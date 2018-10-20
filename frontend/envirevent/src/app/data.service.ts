@@ -12,13 +12,16 @@ export class DataService {
   constructor(public http: HttpClient) { }
 
 
-  postDonateData():void{
+  postDonateData(body):void{
     console.log('posted from data service');
-    this.http.post('/api/setMood', this.body,
-    this.options );
+    this.http.post('/api/api/dummy', body,this.options ).subscribe(
+      dat => console.log(dat)
+    );
 
   }
-
+  getDonateData(): Observable<any> {
+    return this.http.get('/api/api/dummy');
+  }
 
 
 
