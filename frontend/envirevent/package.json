@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "angular-progress-bar": "^1.0.8",
     "angular-font-awesome": "^3.1.2",
     "angular2-qrscanner": "^1.0.4",
     "angularx-qrcode": "^1.2.4",

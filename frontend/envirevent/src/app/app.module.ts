@@ -24,6 +24,8 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { DonatorQrcodeComponent } from './donator-qrcode/donator-qrcode.component';
 import { CollectordetailsComponent } from './collectordetails/collectordetails.component';
 import { DonatorLeaderboardComponent } from './donator-leaderboard/donator-leaderboard.component';
+import {ProgressBarModule} from 'angular-progress-bar';
+
 // import * as RX from "rxjs/Observable";
 
 
@@ -58,7 +60,8 @@ import { DonatorLeaderboardComponent } from './donator-leaderboard/donator-leade
       apiKey: 'AIzaSyDmk0ZLNenVOm3-bcdIHiMm2nBkSrdKLxw'
     }),
     NgQrScannerModule,
-    QRCodeModule
+    QRCodeModule,
+    ProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
