@@ -1,6 +1,6 @@
 var express=require('express');
 var router=express.Router();
-// var User=require('../model/user');
+var User=require('../model/user');
 var transCtrl = require('../controller/transaction.ctrlr')
 
 router.route('/generate')
@@ -8,6 +8,9 @@ router.route('/generate')
 
 router.route('/verify')
     .post(transCtrl.verifyTransaction)
+
+router.route('/all')
+    .get(transCtrl.seperateTransactions)
 
 router.route('/test')
     .get((req , res)=>{

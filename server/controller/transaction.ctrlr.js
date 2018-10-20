@@ -130,7 +130,8 @@ updateTrans = (data, tid, uid)=>{
 
 getAllTransactions = (uid, role)=>{
     return new Promise( (resolve , reject)=>{
-        if (role == 'Collector'){
+        if (role == 'Customer'){
+            console.log('inside customer')
             User.findById(uid).populate({path : 'customerId' , populate : {
                 path : 'transactions',
                 model : 'Transaction'
@@ -155,16 +156,6 @@ getAllTransactions = (uid, role)=>{
 
 
 
-//Defunct
-
-findRecId = (data)=>{
-     DATA["Glass Bottle"]["count"] =  data['Glass Bottle']
-     DATA["TetraPacks"]["count"] =  data["TetraPacks"]
-     DATA["Plastic Bottle"]["count"] =  data["Plastic Bottle"]
-     DATA["Card board Box"]["count"] =  data["Card board Box"]
-     DATA["Wrappers"]["count"] =  data["Wrappers"]
-     return DATA
-}
 
 ///////////////////////EXPORTS
 
@@ -175,7 +166,7 @@ module.exports.generateTransaction = async(req , res)=>{
     var trans = await makeTrans(req.body , user._id)
     user.save()
     trans.save()
-    res.send(trans)
+    res.json(trans)
 
 }
 
@@ -184,7 +175,7 @@ module.exports.verifyTransaction = async(req , res)=>{
     console.log('req is ', req.body)
     var user = await findUser(username)
     var trans = await updateTrans(req.body, req.body.tid , user._id)
-    res.send(trans)
+    res.json(trans)
     
 }
 
@@ -192,7 +183,16 @@ module.exports.seperateTransactions = async(req , res)=>{
     var username = 'ncheck'
     var user = await findUser(username)
     var transactions = await getAllTransactions(user._id , user.role)
-    res.send(transactions)
+    var pending = [] , completed = []
+    transactions.forEach(trans => {
+        if (trans.isPending == true){
+            pending.push(trans)
+        }
+        else{
+            completed.push(trans)
+        }
+    });
+    res.json({pending:pending, completed: completed})
 }
 
 
