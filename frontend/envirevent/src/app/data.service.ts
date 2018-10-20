@@ -12,9 +12,9 @@ export class DataService {
   constructor(public http: HttpClient) { }
 
 
-  postDonateData():void{
+  postDonateData(): void {
     console.log('posted from data service');
-    this.http.post('/api/setMood', this.body,
+    this.http.post('/api/setMood', {abc: 'abc' , abca: 'xyz'},
     this.options );
 
   }

@@ -14,6 +14,9 @@ import { MainLoginComponent } from './main-login/main-login.component';
 import { FormsModule } from '@angular/forms';
 import { MapsComponent } from './maps/maps.component';
 import { AgmCoreModule } from '@agm/core';
+import { CollectorVerifyComponent } from './collector-verify/collector-verify.component';
+import { CollectorRequestComponent } from './collector-request/collector-request.component';
+import { CollectorWalletComponent } from './collector-wallet/collector-wallet.component';
 
 
 @NgModule({
@@ -28,6 +31,9 @@ import { AgmCoreModule } from '@agm/core';
     LoginComponent,
     MainLoginComponent,
     MapsComponent,
+    CollectorVerifyComponent,
+    CollectorRequestComponent,
+    CollectorWalletComponent,
   ],
   imports: [
     BrowserModule,
