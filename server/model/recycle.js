@@ -14,4 +14,4 @@ var recycleSchema =  mongoose.Schema({
 
 
 
-module.exports=mongoose.model('Recycle' , recycleSchema)
+module.exports = mongoose.model('Recycle' , recycleSchema)

@@ -3,7 +3,6 @@ const User = require('../model/user')
 const Transaction = mongoose.model('Transaction')
 const Collector = mongoose.model('Collector')
 const Customer = mongoose.model('Customer')
-const Wallet = mongoose.model('Wallet')
 
 const DATA = {
     "Glass Bottle": {
@@ -155,7 +154,9 @@ getAllTransactions = (uid, role)=>{
 }
 
 
-
+module.exports = {
+    findUser
+}
 
 ///////////////////////EXPORTS
 

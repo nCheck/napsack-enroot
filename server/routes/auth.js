@@ -15,12 +15,20 @@ router
 	User.register(new User({username:username}),password,function(err,user){
 		if (err)
 			{   	console.log(err)
-				return res.render('register')
-            }
-            console.log('i m here');
-		passport.authenticate('local')(req,res,function(){
-			res.redirect('login')
-		});
+				res.json({status : false})
+			}
+		else{
+
+			console.log('i m here');
+			user.role = req.body.role
+			user.name = req.body.name
+			user.phoneNo = req.body.phoneNo
+			user.save()
+			passport.authenticate('local')(req,res,function(){
+				res.json({status : true})
+			});
+
+		}
 	})
 });
 
@@ -32,6 +40,8 @@ router
 	res.render('login.ejs')
 })
 .post(passport.authenticate("local",),userCtrlr.viewingRegion)//middleware for checking database
+
+
 function isLoggedIn(req, res, next){
 	console.log(req+" in post of login");
 	console.log(req.isAuthenticated());
@@ -41,6 +51,8 @@ function isLoggedIn(req, res, next){
 	console.log('failed');
     res.send('no');
 }
+
+
 router
 .route('/logout')
 .get( function(req, res){

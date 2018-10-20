@@ -3,11 +3,9 @@ var Schema = mongoose.Schema
 
 
 var customerSchema = new Schema({
-    name : String,
-    phoneNo : Number,
     wallet : {
-        type : Schema.Types.ObjectId,
-        ref : 'Wallet'        
+        type : Number,
+        default : 0.0        
     } ,
     transactions : [{
         type : Schema.Types.ObjectId,

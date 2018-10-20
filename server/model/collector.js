@@ -14,8 +14,8 @@ var colSchema = mongoose.Schema({
         ref : 'Transaction'
     }] ,
     wallet : {
-        type : Schema.Types.ObjectId,
-        ref : 'Wallet'        
+        type : Number,
+        default : 0.0        
     } , 
     inventory:[{
         type:Schema.Types.ObjectId,
@@ -26,7 +26,7 @@ var colSchema = mongoose.Schema({
             type:Schema.Types.Decimal128
 
         },
-        long:{
+        lon:{
             type:Schema.Types.Decimal128
         }
     },

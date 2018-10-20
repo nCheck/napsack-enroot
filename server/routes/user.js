@@ -4,10 +4,7 @@ var userctrlr=require('../controller/user.ctrlr');
 
 router
 .route('/createProfile')
-.get((req,res)=>{
-    res.render('profile')//to be done
-})
-.post(userctrlr.profileCreation);
+    .post(userctrlr.profileCreation);
 
 
 module.exports = router

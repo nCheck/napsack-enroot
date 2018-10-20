@@ -8,7 +8,10 @@ router.route('/dummy')
         res.json({message : "Hello"})
     })
 
-
+router.route('/user')
+    .get((req,res)=>{
+        res.send(req.user)
+    })
 
 
 

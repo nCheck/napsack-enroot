@@ -46,12 +46,14 @@ var authRoute=require('./routes/auth.js');
 var transRoute = require('./routes/trans');
 var apiRoute = require('./routes/api')
 var userRoute=require('./routes/user');						//User profile creation
+var questRoute = require('./routes/quest')
 
 ///Use routes
 app.use('/auth',authRoute);
 app.use('/transac', transRoute)
 app.use('/api', apiRoute)
 app.use('/user',userRoute);
+app.use('/quest', questRoute)
 
 app.listen(port , function () {
 	console.log('Site is active on localhost:' + port+'/');
