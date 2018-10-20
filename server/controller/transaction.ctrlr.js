@@ -4,7 +4,7 @@ const Transaction = mongoose.model('Transaction')
 const Collector = mongoose.model('Collector')
 const Customer = mongoose.model('Customer')
 const Wallet = mongoose.model('Wallet')
-
+const Inventory=require('../model/inventory');
 const DATA = {
     "Glass Bottle": {
         "item" : "Glass Bottle",
@@ -68,7 +68,7 @@ calTransac = (items)=>{
 
 //Hardcode points, points can be searched later
 
-makeTrans = (data, uid)=>{
+makeTrans = (data, user)=>{
     items = [ { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012a') , count : data["Glass Bottle"] } , 
               { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012c') , count : data["TetraPacks"] } ,
               { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012b') , count : data["Plastic Bottle"] } ,
@@ -83,7 +83,8 @@ makeTrans = (data, uid)=>{
         transacDate : Date.now(),
         items : items,
         transacValue : transacValue,
-        customerId : mongoose.Types.ObjectId(uid)
+        customerId : mongoose.Types.ObjectId(user.customerId),
+        collectorId:mongoose.Types.ObjectId(user.collectorId)
     }
     return new Promise( (resolve , reject)=>{
         Transaction.create(query , (err, doc)=>{
@@ -97,7 +98,7 @@ makeTrans = (data, uid)=>{
     } )
 }
 
-updateTrans = (data, tid, uid)=>{
+updateTrans = (data, tid)=>{
     items = [ { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012a') , count : data["Glass Bottle"] } , 
               { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012c') , count : data["TetraPacks"] } ,
               { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012b') , count : data["Plastic Bottle"] } ,
@@ -111,7 +112,6 @@ updateTrans = (data, tid, uid)=>{
         transacDate : Date.now(),
         items : items,
         transacValue : transacValue,
-        collectorId : mongoose.Types.ObjectId(uid),
         isPending : false
     }
 
@@ -127,7 +127,23 @@ updateTrans = (data, tid, uid)=>{
     })
 }
 
-
+updateInventory=(r,collector,transaction)=>{
+    Collector.findById(collector.populate('transactions').exec((err,doc)=>{
+        var trans=doc.transactions;
+        var invent=doc.inventory
+        trans.findById(transaction._id,(err,docc)=>{
+            invent.forEach(items=>{
+                docc.items.forEach(ditems=>{
+                    if(items['item']===ditems['item'])
+                    {
+                        items['count']+=ditems['count'];
+                    }
+                })
+                
+            })
+        })
+    })
+    )}
 getAllTransactions = (uid, role)=>{
     return new Promise( (resolve , reject)=>{
         if (role == 'Customer'){
@@ -163,7 +179,7 @@ module.exports.generateTransaction = async(req , res)=>{
     var username = 'ncheck'
     console.log('req is ', req.body)
     var user = await findUser(username)
-    var trans = await makeTrans(req.body , user._id)
+    var trans = await makeTrans(req.body , user)
     user.save()
     trans.save()
     res.json(trans)
@@ -174,7 +190,8 @@ module.exports.verifyTransaction = async(req , res)=>{
     var username = 'suyash'
     console.log('req is ', req.body)
     var user = await findUser(username)
-    var trans = await updateTrans(req.body, req.body.tid , user._id)
+    var trans = await updateTrans(req.body, req.body.tid , user)
+    var inventory=await updateInventory(req.body,user.collectorId,trans)
     res.json(trans)
     
 }

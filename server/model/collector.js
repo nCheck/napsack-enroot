@@ -18,8 +18,14 @@ var colSchema = mongoose.Schema({
         ref : 'Wallet'        
     } , 
     inventory:[{
-        type:Schema.Types.ObjectId,
-        ref:'Inventory'
+        item : {
+            type : Schema.Types.ObjectId,
+            ref : 'Recycle'
+        } , 
+        count : {
+            type : Number,
+            default : 0
+        }
     }],
     loc: {
         lat:{
