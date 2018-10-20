@@ -23,16 +23,28 @@ export const routes: Routes = [
   {
     path: 'donor',
     component: DonatorComponent,
-    // children: [
-    //   {
-    //     path: '',
-    //     component: DonatorComponent,
-    //   },
-    //   {
-    //     path: '',
-    //     component: DonatorComponent,
-    //   },
-    // ]
+    children: [
+      {
+        path: '',
+        component: DonatorComponent,
+      },
+      {
+        path: 'donate',
+        component: DonatorDonateComponent,
+      },
+      {
+        path: 'transact',
+        component: DonatorTransactionComponent,
+      },
+      {
+        path: 'wallet',
+        component: DonatorWalletComponent,
+      },
+      {
+        path: 'quest',
+        component: DonatorQuestComponent,
+      },
+    ]
   },
 
 ];
