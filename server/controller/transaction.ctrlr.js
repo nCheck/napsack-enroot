@@ -7,3 +7,7 @@ const Wallet = mongoose.model('Wallet')
 
 
 
+module.exports.makeTransaction = (req , res)=>{
+    var username = req.user.username
+    
+}

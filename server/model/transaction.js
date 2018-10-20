@@ -23,7 +23,8 @@ var tranSchema = mongoose.Schema({
     }],
 
     collectorId : String , 
-
+    donarId : String,
+    
     transacValue : {
         type : Schema.Types.Decimal128,
         default : 0.0

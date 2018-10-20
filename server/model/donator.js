@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema
 
 
-var donSchema = mongoose.Schema({
+var customerSchema = new Schema({
     name : String,
     phoneNo : Number,
     wallet : {
@@ -24,4 +24,4 @@ var donSchema = mongoose.Schema({
 
 
 
-module.exports=mongoose.model('Donator' , donSchema)
+module.exports=mongoose.model('Customer' , customerSchema)
