@@ -28,8 +28,8 @@ dataPOST={};
 }
 loginClick():void{
   this.dataPOST={
-    "userName":this.usernameLogin,
-    "passWord":this.passwordLogin,
+    "username":this.usernameLogin,
+    "password":this.passwordLogin,
     "type":"login",
   }
   this.data.postLoginData(this.dataPOST);

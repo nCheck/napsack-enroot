@@ -24,7 +24,14 @@ export class DataService {
   }
   postLoginData(body):void{
     console.log('posted from data service');
-    this.http.post('/api/api/dummy', body,this.options ).subscribe(
+    this.http.post('/api/auth/login', body,this.options ).subscribe(
+      dat => console.log(dat)
+    );
+
+  }
+  postRegData(body):void{
+    console.log('posted from data service');
+    this.http.post('/api/auth/register', body,this.options ).subscribe(
       dat => console.log(dat)
     );
 
