@@ -20,7 +20,14 @@ export class DataService {
 
   }
   getDonateData(): Observable<any> {
-    return this.http.get('/api/api/dummy');
+    return this.http.get('/api/transac/test');
+  }
+  postLoginData(body):void{
+    console.log('posted from data service');
+    this.http.post('/api/api/dummy', body,this.options ).subscribe(
+      dat => console.log(dat)
+    );
+
   }
 
 

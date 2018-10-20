@@ -36,10 +36,10 @@ e.preventDefault();
 					<div class="panel-heading">
 						<div class="row">
 							<div class="col-xs-6">
-								<a  class="active" id="login-form-link" (click)="logSwap();" style="cursor:default;">Login</a>
+								<a  [ngClass]="{'active': id === 1 } " id="login-form-link" (click)="logSwap();addClass(1)" style="cursor:default;">Login</a>
 							</div>
 							<div class="col-xs-6">
-								<a  id="register-form-link" (click)="regSwap();">SignUp</a>
+								<a [ngClass]="{'active': id === 2 }"  id="register-form-link" (click)="regSwap();addClass(2)">SignUp</a>
 							</div>
 						</div>
 						<hr>
@@ -52,10 +52,10 @@ e.preventDefault();
 							<div class="col-lg-12">
 								<form id="login-form" method="post" role="form"  [ngStyle]="{'display':displaylog}" style="cursor:default;">
 									<div class="form-group">
-										<input type="text" name="username" id="username1" tabindex="1" class="form-control" placeholder="Username" value="">
+										<input [(ngModel)]="usernameLogin" type="text" name="username" id="username1" tabindex="1" class="form-control" placeholder="Username" value="">
 									</div>
 									<div class="form-group">
-										<input type="password" name="password" id="password1" tabindex="2" class="form-control" placeholder="Password">
+										<input [(ngModel)]="passwordLogin" type="password" name="password" id="password1" tabindex="2" class="form-control" placeholder="Password">
 									</div>
 									<div class="form-group text-center">
 										<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
@@ -64,7 +64,7 @@ e.preventDefault();
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-6 col-sm-offset-3">
-												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+												<input (click)="loginClick();" type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
 											</div>
 										</div>
 									</div>
