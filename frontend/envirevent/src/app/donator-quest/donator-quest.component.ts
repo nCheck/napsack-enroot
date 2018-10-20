@@ -7,7 +7,6 @@ import { DataService } from '../data.service';
 })
 export class DonatorQuestComponent implements OnInit {
   constructor(private data:DataService) { 
-
   } 
   ngOnInit() {
   }

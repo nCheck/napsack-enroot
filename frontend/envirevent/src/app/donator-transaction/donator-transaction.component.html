@@ -2,9 +2,9 @@
     <h1>PENDING</h1>
   
     <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle"  type="button" data-toggle="dropdown">TRANSACTION MANAGEMENT
+      <button class="btn btn-primary dropdown-toggle"  type="button" data-toggle="dropdown" (click)="isActive = !isActive">TRANSACTION MANAGEMENT
       <span class="caret"></span></button>
-      <ul class="dropdown-menu">
+      <ul class="dropdown-menu" [ngClass]="{show : isActive}">
         <li><a href="#"><div class="form-group col-10">
         <span><input [(ngModel)]="tetraPack" type="number" class="col" id="tetraPack" name="tetraPack" placeholder="Tetra Pack">
         <label for="points">Points:</label>

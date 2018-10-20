@@ -7,6 +7,8 @@ import { DataService } from '../data.service';
 })
 export class DonatorTransactionComponent implements OnInit {
 
+  isActive:boolean=true;
+  
   constructor(private data:DataService) { 
 
   }
