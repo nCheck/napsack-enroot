@@ -8,6 +8,8 @@ mongoose.connection.on('connected' , () =>{
 
 require('./recycle')
 require('./transaction')
+require('./inventory')
+require('./pickup')
 require('./wallet')
 require('./collector')
 require('./customer')

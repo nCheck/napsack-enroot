@@ -45,10 +45,13 @@ app.use(parser.json());
 var authRoute=require('./routes/auth.js');
 var transRoute = require('./routes/trans');
 var apiRoute = require('./routes/api')
+var userRoute=require('./routes/user');						//User profile creation
+
 ///Use routes
 app.use('/auth',authRoute);
 app.use('/transac', transRoute)
 app.use('/api', apiRoute)
+app.use('/user',userRoute);
 
 app.listen(port , function () {
 	console.log('Site is active on localhost:' + port+'/');
