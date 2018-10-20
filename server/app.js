@@ -8,7 +8,10 @@ var localstrategy         = require('passport-local');
 var passportlocalmongoose = require('passport-local-mongoose');
 var port=2535;
 require('./model/db')
-var User=require('./model/user');
+
+///Models
+var User = require('./model/user');
+var Recycle = require('./model/recycle')
 
 app.get('',(req,res)=>
 {
@@ -53,3 +56,9 @@ app.listen(port , function () {
 //     username : 'ncheck',
 //     password : 'ncheck'
 // } , )
+
+// Recycle.create({item : 'Glass Bottle' , value : 0.2 })
+// Recycle.create({item : 'Plastic Bottle' , value : 0.2 })
+// Recycle.create({item : 'TetraPacks' , value : 0.2 })
+// Recycle.create({item : 'Card board Box' , value : 0.2 })
+// Recycle.create({item : 'Wrappers' , value : 0.2 })
