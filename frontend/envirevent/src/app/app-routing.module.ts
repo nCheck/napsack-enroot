@@ -1,6 +1,6 @@
 
 import { CommonModule } from '@angular/common';
-import { NgModule,ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DonatorComponent } from './donator/donator.component';
@@ -50,7 +50,7 @@ export const routes: Routes = [
 ];
 @NgModule({
   imports: [
-    CommonModule,RouterModule.forRoot(routes)
+    CommonModule, RouterModule.forRoot(routes)
   ],
   exports: [RouterModule],
   declarations: [],
