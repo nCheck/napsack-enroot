@@ -1,0 +1,13 @@
+<form>
+  <span>
+    Select Choice
+  </span>
+  
+  <span>
+    <select *ngFor="let val of Choice; let i = index">
+      <option value={{i}}>{{val.name}}</option>
+    </select>
+  </span>
+  
+  
+</form>
