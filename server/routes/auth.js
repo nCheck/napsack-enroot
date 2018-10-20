@@ -21,6 +21,7 @@ router
 
 			console.log('i m here');
 			user.name = req.body.name
+			user.role = req.body.role
 			user.phoneNo = req.body.phoneNo
 			user.save()
 			passport.authenticate('local')(req,res,function(){

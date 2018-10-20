@@ -41,5 +41,4 @@ var tranSchema = mongoose.Schema({
 
 
 
-
 module.exports=mongoose.model('Transaction' , tranSchema)
