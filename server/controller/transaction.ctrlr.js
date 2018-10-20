@@ -192,7 +192,13 @@ module.exports.verifyTransaction = async(req , res)=>{
     console.log('req is ', req.body)
     var user = await findUser(username)
     var trans = await updateTrans(req.body, req.body.tid , user)
-    var inventory=await updateInventory(req.body,user.collectorId,trans)
+    var inventory = await updateInventory(req.body,user.collectorId,trans)
+    var uQuests = user.quests
+    for(i = 0 ; i < uQuests.length ; i++){
+        for( j = 0 ; j < trans.items.length ; j++){
+
+        }
+    }
     res.json(trans)
     
 }

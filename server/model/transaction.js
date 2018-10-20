@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema
-
+var Dump = mongoose.model('TempQuest')
 
 var tranSchema = mongoose.Schema({
 
@@ -9,7 +9,10 @@ var tranSchema = mongoose.Schema({
         default : true
     } ,
 
-    transacDate : Date,
+    transacDate : {
+        type : Date,
+        default : Date.now()
+    },
 
     items : [{
         item : {
@@ -28,12 +31,24 @@ var tranSchema = mongoose.Schema({
     transacValue : {
         type : Number,
         default : 0.0
+    } ,
+
+    tempId :{
+        type : Schema.Types.ObjectId,
+        ref : 'tempQuest'
     }
 })
 
 
 
-
+tranSchema.pre('save' , (doc)=>{
+    if ( ! doc.isPending ){
+        Dump.create({item  : doc.items} , (err , docc)=>{
+            doc.tempId = docc._id
+            doc.save()
+        })
+    }
+})
 
 
 
