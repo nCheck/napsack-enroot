@@ -1,7 +1,35 @@
-<div class="card  text-black" style="background: linear-gradient(to top left, #00ffff 5%, #66ff33 99%);" >
-  <div class="card-body text-center eventFont">Event Name</div>
-  <span>    </span>
-  <div class="col-8 col-s-8">
-    <progress-bar [progress]="50" [color]="'#488aff'"></progress-bar>
+<div class="card" style="background: linear-gradient(to bottom left, #afffb2 14%, #00ffff 100%);" >
+  <div class="card-body text-center eventFont textGreen">Event Name <i class="fas fa-recycle"></i> </div>
+  <hr>
+
+ 
+   <div align="center" class="eventFont" style="margin-bottom: 10px">Date Of Event</div> <br><br>  
+
+  <div class="row">
+    <span class="col-lg-6 col-12 dateFont" style="text-align:center">
+        Date Started = date we get
+    </span>
+    
+    <span class="col-1" ></span>
+    <span class="col-lg-6 col-11   dateFont" style="text-align:center">
+        Ending Date = date we get
+    </span>
+  </div>
+
+  <hr>
+
+  <div align="center" class="eventFont">
+    Progress
+  </div>
+
+  <div class="row">
+    <span class="col-lg-8 col-12">
+      <progress-bar [progress]="50" [color]="'#488aff'"></progress-bar>
+    </span>
+  
+    <span align="center" class="col-lg-3 col-12">
+      <button type="button" class="btn btn-default" style="width:100%" >Reedem</button>
+    </span> 
+
   </div>
 </div>
