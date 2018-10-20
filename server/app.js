@@ -34,7 +34,7 @@ passport.use(new localstrategy(User.authenticate()));	//User.authenticate presen
 passport.serializeUser(User.serializeUser())		//No need to define function User.serializeUser since we used
 passport.deserializeUser(User.deserializeUser())	//passport local mongoose it already has those function
 
-
+var User=require('./model/user');
 
 app.set('view engine', 'ejs');
 app.use(parser.urlencoded({extended:true}));
@@ -90,4 +90,7 @@ app.listen(port , function () {
 
 // User.updateOne({username : 'ncheck'} , {customerId : mongoose.Types.ObjectId("5bcaf43412fdd540943678a8")} , (err, doc)=>{
 // 	console.log(doc)
+// })
+// User.find({role:'Customer'},(err,doc)=>{
+// 	console.log(doc);
 // })

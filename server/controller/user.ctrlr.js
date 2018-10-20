@@ -19,26 +19,26 @@ module.exports.viewingRegion=(req,res)=>{
 
 module.exports.profileCreation = (req,res)=>{
 var username = req.user.username
-if(req.user.role==='Customer')
-	{
-		Customer.create({},(err,doc)=>{
-			if(err)
-				console.log(err);
-			else{
+// if(req.user.role==='Customer')
+// 	{
+// 		Customer.create({},(err,doc)=>{
+// 			if(err)
+// 				console.log(err);
+// 			else{
 
-		User.findOneAndUpdate({username:username},{$set:{customerId:doc._id}},(err,docc)=>{
-			if(err)
-			res.send(err);
-			else
-			res.send(docc+" updated id ");
-		})	
+// 		User.findOneAndUpdate({username:username},{$set:{customerId:doc._id}},(err,docc)=>{
+// 			if(err)
+// 			res.send(err);
+// 			else
+// 			res.send(docc+" updated id ");
+// 		})	
 
-		}
+// 		}
 	
-		})
-	}
-	else
-	{
+// 		})
+// 	}
+// 	else
+// 	{
 		var r=req.body;
 		var items=[];
 	
@@ -76,5 +76,5 @@ if(req.user.role==='Customer')
 	}
 
 
-}
+
 	
