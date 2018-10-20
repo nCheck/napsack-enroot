@@ -7,18 +7,38 @@ import { DataService } from '../data.service';
 })
 export class DonatorLeaderboardComponent implements OnInit {
     leaderboard:any[];
-    initLeaderBoard():void{
-      this.data.getLeaderboardData().subscribe((product1:any[]) => {
-        this.leaderboard = product1; 
-        console.log(this.leaderboard); 
-    })
-    }
-  constructor(private data:DataService) { 
 
+    filter(i:Number):boolean{
+      if(i>3)
+      return false;
+      else
+      return true;
+    }
+
+    color(i:Number):string{
+      if(i==1)
+        return "gold";
+      else if(i==2)
+        return "silver";
+      else
+        return "brown";
+
+    }
+    initLeaderBoard():void{
+      console.log("hello");
+      this.data.getLeaderboardData().subscribe((placesData: any[]) => {
+        this.leaderboard = placesData;
+        console.log(this.leaderboard);
+        console.log("crappy"); 
+      });
+    }
+  constructor(public data:DataService) { 
+    this.initLeaderBoard();
   } 
 
   ngOnInit() {
-    this.initLeaderBoard();
+
+
   }
 
 }

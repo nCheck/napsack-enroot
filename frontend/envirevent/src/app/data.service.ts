@@ -23,6 +23,7 @@ export class DataService {
     return this.http.get('/api/transac/test');
   }
   getLeaderboardData(): Observable<any> {
+    console.log(this.http.get('/api/quest/leaderboard'));
     return this.http.get('/api/quest/leaderboard');
   }
   postLoginData(body):void{
