@@ -5,9 +5,9 @@ var User = mongoose.model('User');
 module.exports.viewingRegion=(req,res)=>{
 
 		if(req.user.role==='Customer')
-			res.redirect('/customerPage');	
+			res.redirect('/');	
 		else{
-			res.redirect('/collectorPage');
+			res.redirect('/');
 		}
 	}
 

@@ -18,7 +18,7 @@ router
 			{   	console.log(err)
 				return res.render('register')
             }
-            console.log
+            console.log('i m here');
 		passport.authenticate('local')(req,res,function(){
 			res.redirect('login')
 		});
@@ -38,8 +38,9 @@ function isLoggedIn(req, res, next){
 	console.log(req.isAuthenticated());
     if(req.isAuthenticated()){
         return next();
-    }
-    res.redirect("/auth/login");
+	}
+	console.log('failed');
+    res.send('no');
 }
 router
 .route('/logout')
