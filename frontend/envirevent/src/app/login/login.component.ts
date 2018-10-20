@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
   id:Number=1;
   usernameLogin:String="";
   passwordLogin:String="";
-
+  checkBox:Number=1;
 dataPOST={};
 
   
@@ -39,15 +39,24 @@ loginClick():void{
 }
 
 regClick():void{
+ var regType:String="" ;
+  if(this.checkBox==2)
+    regType="Collector";
+  else
+    regType="Customer";
   this.dataPOST={
     "username":this.usernameLogin,
     "password":this.passwordLogin,
+    "role":regType,
     "type":"register",
   }
   this.data.postRegData(this.dataPOST);
   this.dataPOST={};
   console.log("register clicked");
 
+}
+onSelectCheckBox(id:Number){
+  this.checkBox=id;
 }
 
   constructor(private data:DataService) { }

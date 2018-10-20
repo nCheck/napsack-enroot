@@ -72,7 +72,7 @@ e.preventDefault();
 										<div class="row">
 											<div class="col-lg-12">
 												<div class="text-center">
-													<a href="https://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
+													<a href="https://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a> 
 												</div>
 											</div>
 										</div>
@@ -89,15 +89,15 @@ e.preventDefault();
 										<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
 									</div>
 									<div class=" form-group">
-											<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+											<input (click)="onSelectCheckBox(1)" class="form-check-input" tabindex="3" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
 											<label class="form-check-label" for="exampleRadios1">
-													Register as User
+												  	Register as User
 											</label>
 										  </div>
 										  <div class=" form-group">
-											<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+											<input (click)="onSelectCheckBox(2)" class="form-check-input"  tabindex="3" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
 											<label class="form-check-label" for="exampleRadios2">
-											  Register as Collection Point
+											    Register as Collection Point
 											</label>
 										  </div>
 									<div class="form-group">
