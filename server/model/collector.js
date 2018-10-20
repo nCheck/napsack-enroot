@@ -26,10 +26,14 @@ var colSchema = mongoose.Schema({
             type:Schema.Types.Decimal128
 
         },
-        lon:{
+        long:{
             type:Schema.Types.Decimal128
         }
     },
+    pickup:[{
+        type:Schema.Types.ObjectId,
+        ref :'Pickup'
+    }]
     
     
 });
