@@ -3,7 +3,6 @@ var router=express.Router();
 var User=require('../model/user');
 var passport=require('passport');
 var userCtrlr=require('../controller/user.ctrlr');
-
 router
 .route('/register')
 .get(function(req,res){

@@ -17,13 +17,23 @@ var colSchema = mongoose.Schema({
         type : Schema.Types.ObjectId,
         ref : 'Wallet'        
     } , 
+    inventory:[{
+        type:Schema.Types.ObjectId,
+        ref:'Inventory'
+    }],
     loc: {
-        type: { type: String },
-        coordinates: []
-    } 
+        lat:{
+            type:Schema.Types.Decimal128
+
+        },
+        lon:{
+            type:Schema.Types.Decimal128
+        }
+    },
+    
     
 });
 
-colSchema.index({ "loc": "2dsphere" });
+// colSchema.index({ "loc": "2dsphere" });
 
 module.exports=mongoose.model('Collector' , colSchema)
