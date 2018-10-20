@@ -24,12 +24,9 @@ export const routes: Routes = [
     path: 'donor',
     component: DonatorComponent,
     children: [
+
       {
         path: '',
-        component: DonatorComponent,
-      },
-      {
-        path: 'donate',
         component: DonatorDonateComponent,
       },
       {
