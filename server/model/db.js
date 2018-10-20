@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
-	database	 = 'mongodb://sanes4sanes4ever@ds125058.mlab.com:25058/envir-event'
+	database	 = 'mongodb://sanes4:sanes4ever@ds125058.mlab.com:25058/envir-event'
 	
-mongoose.connect(database);
+mongoose.connect(database , { useNewUrlParser: true });
 mongoose.connection.on('connected' , () =>{
 	console.log('connected')
 });

@@ -42,7 +42,7 @@ app.use(parser.json());
 var authRoute=require('./routes/auth.js');
 
 
-app.use('/authentication',authRoute);
+app.use('/auth',authRoute);
 
 app.listen(port , function () {
 	console.log('Site is active on localhost:' + port+'/');

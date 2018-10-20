@@ -20,7 +20,7 @@ router
             }
             console.log
 		passport.authenticate('local')(req,res,function(){
-			res.redirect('/login')
+			res.redirect('login')
 		});
 	})
 });
@@ -28,7 +28,7 @@ router
 
 
 router
-.route('login')
+.route('/login')
 .get(function(req,res){
 	res.render('login.ejs')
 })
@@ -39,7 +39,7 @@ function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
         return next();
     }
-    res.redirect("/login");
+    res.redirect("/auth/login");
 }
 router
 .route('/logout')
