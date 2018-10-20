@@ -10,6 +10,15 @@ var customerSchema = new Schema({
     transactions : [{
         type : Schema.Types.ObjectId,
         ref : 'Transaction'
+    }] ,
+    quests : [ { quest : {
+        type : Schema.Types.ObjectId,
+        ref : 'Transaction'
+    } ,
+        progress : {
+            type : Number,
+            default : 0
+        }
     }] 
 
 })

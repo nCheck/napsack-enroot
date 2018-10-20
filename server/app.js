@@ -91,3 +91,11 @@ app.listen(port , function () {
 // User.updateOne({username : 'ncheck'} , {customerId : mongoose.Types.ObjectId("5bcaf43412fdd540943678a8")} , (err, doc)=>{
 // 	console.log(doc)
 // })
+// User.find({} , (err, doc)=>{
+// 	doc.forEach(d => {
+// 		console.log(d)
+// 		if (d.role == 'Customer'){
+// 			console.log("Role A")
+// 		}
+// 	});
+// })

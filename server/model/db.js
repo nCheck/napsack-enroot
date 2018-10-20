@@ -6,7 +6,9 @@ mongoose.connection.on('connected' , () =>{
 	console.log('connected')
 });
 
+
 require('./recycle')
+require('./quest')
 require('./transaction')
 require('./pickup')
 require('./collector')

@@ -20,7 +20,6 @@ router
 		else{
 
 			console.log('i m here');
-			user.role = req.body.role
 			user.name = req.body.name
 			user.phoneNo = req.body.phoneNo
 			user.save()
