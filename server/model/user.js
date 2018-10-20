@@ -11,6 +11,14 @@ var userSchema = new mongoose.Schema({
         enum:['Collector','Customer'],
 		default : 'Customer'
 	},
+	customerId:{
+		type:Schema.Types.ObjectId,
+		ref:'User'
+	},
+	collectorId:{
+		type:Schema.Types.ObjectId,
+		ref:'Collector'
+	}
 });
 
 
