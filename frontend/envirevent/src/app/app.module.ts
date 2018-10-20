@@ -14,6 +14,8 @@ import { MainLoginComponent } from './main-login/main-login.component';
 import { FormsModule } from '@angular/forms';
 import { MapsComponent } from './maps/maps.component';
 import { AgmCoreModule } from '@agm/core';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CollectorVerifyComponent } from './collector-verify/collector-verify.component';
 import { CollectorRequestComponent } from './collector-request/collector-request.component';
 import { CollectorWalletComponent } from './collector-wallet/collector-wallet.component';
@@ -40,6 +42,9 @@ import { NgQrScannerModule } from 'angular2-qrscanner';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
+    // HttpClient,
+    HttpModule,
     SidebarModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDmk0ZLNenVOm3-bcdIHiMm2nBkSrdKLxw'

@@ -12,12 +12,22 @@ export class DataService {
   constructor(public http: HttpClient) { }
 
 
-  postDonateData(): void {
+  postDonateData(body):void{
     console.log('posted from data service');
-    this.http.post('/api/setMood', {abc: 'abc' , abca: 'xyz'},
-    this.options );
+    this.http.post('/api/api/dummy', body,this.options ).subscribe(
+      dat => console.log(dat)
+    );
 
   }
+  getDonateData(): Observable<any> {
+    return this.http.get('/api/transac/test');
+  }
+  postLoginData(body):void{
+    console.log('posted from data service');
+    this.http.post('/api/api/dummy', body,this.options ).subscribe(
+      dat => console.log(dat)
+    );
 
+  }
 
 }
