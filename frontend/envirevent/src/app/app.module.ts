@@ -21,12 +21,10 @@ import { FormsModule } from '@angular/forms';
     DonatorDonateComponent,
     DonatorTransactionComponent,
     DonatorWalletComponent,
-    
     DonatorQuestComponent,
     AppComponent,
     LoginComponent,
     MainLoginComponent,
-    MapsComponent,
   ],
   imports: [
     BrowserModule,
