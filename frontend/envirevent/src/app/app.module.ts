@@ -22,7 +22,6 @@ import { CollectorWalletComponent } from './collector-wallet/collector-wallet.co
 import { NgQrScannerModule } from 'angular2-qrscanner';
 import { QRCodeModule } from 'angularx-qrcode';
 import { DonatorQrcodeComponent } from './donator-qrcode/donator-qrcode.component';
-
 import { CollectordetailsComponent } from './collectordetails/collectordetails.component';
 import { DonatorLeaderboardComponent } from './donator-leaderboard/donator-leaderboard.component';
 // import * as RX from "rxjs/Observable";
