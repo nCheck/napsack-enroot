@@ -28,7 +28,7 @@ const DATA = {
     },
     "Wrappers": {
         "item" : "Wrappers" ,
-        "id" : "5bcb03c64f37e84f9ac5012es",
+        "id" : "5bcb03c64f37e84f9ac5012e",
         "count" : 0
     }
 }
@@ -57,7 +57,8 @@ calTransac = (items)=>{
     var values = [0.2, 0.4, 0.1, 0.35, 0.15]
     var i = 0
     items.forEach(ele => {
-        trans += values[i]*ele['count']
+        if (! isNaN(ele['count']))
+            trans += values[i]*ele['count']
     });
     return trans
 }
@@ -67,22 +68,21 @@ calTransac = (items)=>{
 
 //Hardcode points, points can be searched later
 
-makeTrans = (data)=>{
-    transacValue = calTransac()
-    items = [ { item : '5bcb03c64f37e84f9ac5012a' , count : data["Glass Bottle"] } , 
-              { item : '5bcb03c64f37e84f9ac5012c' , count : data["TetraPacks"] } ,
-              { item : '5bcb03c64f37e84f9ac5012b' , count : data["Plastic Bottle"] } ,
-              { item : '5bcb03c64f37e84f9ac5012d' , count : data["Card board Box"] } ,
-              { item : '5bcb03c64f37e84f9ac5012es' , count : data["Wrappers"] } ,
+makeTrans = (data, uid)=>{
+    items = [ { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012a') , count : data["Glass Bottle"] } , 
+              { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012c') , count : data["TetraPacks"] } ,
+              { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012b') , count : data["Plastic Bottle"] } ,
+              { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012d') , count : data["Card board Box"] } ,
+              { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012e') , count : data["Wrappers"] } ,
             ]
-
-    transacValue = await calTransac(items)
+    console.log(data)
+    transacValue = calTransac(items)
 
     query =  {
-        transacDate : Date.now,
+        transacDate : Date.now(),
         items : items,
-        transacValue : transacValue
-
+        transacValue : transacValue,
+        donarId : mongoose.Types.ObjectId(uid)
     }
     return new Promise( (resolve , reject)=>{
         Transaction.create(query , (err, doc)=>{
@@ -99,6 +99,7 @@ makeTrans = (data)=>{
 
 
 
+//Defunct
 
 findRecId = (data)=>{
      DATA["Glass Bottle"]["count"] =  data['Glass Bottle']
@@ -113,8 +114,15 @@ findRecId = (data)=>{
 
 module.exports.generateTransaction = async(req , res)=>{
     var username = 'ncheck'
+    console.log('req is ', req.body)
     var user = await findUser(username)
-    var trans = await makeTrans(req.body)
-    res.send(user)
+    var trans = await makeTrans(req.body , user._id)
+    res.send(trans)
 
+}
+
+
+module.exports.dummyPost = (req , res)=>{
+    console.log(req)
+    res.send("Done")
 }

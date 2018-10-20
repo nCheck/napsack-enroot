@@ -4,9 +4,9 @@ var router=express.Router();
 var transCtrl = require('../controller/transaction.ctrlr')
 
 router.route('/')
-    .get(transCtrl.generateTransaction)
+    .post(transCtrl.generateTransaction)
 
 
 
 
-    module.exports=router
+module.exports=router
