@@ -28,8 +28,8 @@ dataPOST={};
 }
 loginClick():void{
   this.dataPOST={
-    "userName":this.usernameLogin,
-    "passWord":this.passwordLogin,
+    "username":this.usernameLogin,
+    "password":this.passwordLogin,
     "type":"login",
   }
   this.data.postLoginData(this.dataPOST);
@@ -37,6 +37,19 @@ loginClick():void{
   console.log("login clicked");
 
 }
+
+regClick():void{
+  this.dataPOST={
+    "username":this.usernameLogin,
+    "password":this.passwordLogin,
+    "type":"register",
+  }
+  this.data.postRegData(this.dataPOST);
+  this.dataPOST={};
+  console.log("register clicked");
+
+}
+
   constructor(private data:DataService) { }
 
   ngOnInit() {
