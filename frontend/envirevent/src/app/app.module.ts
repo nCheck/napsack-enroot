@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DonatorComponent } from './donator/donator.component';
@@ -13,6 +12,9 @@ import { AppRoutingModule } from './/app-routing.module';
 import { SidebarModule } from 'ng-sidebar';
 import { MainLoginComponent } from './main-login/main-login.component';
 import { FormsModule } from '@angular/forms';
+import { MapsComponent } from './maps/maps.component';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -21,17 +23,20 @@ import { FormsModule } from '@angular/forms';
     DonatorDonateComponent,
     DonatorTransactionComponent,
     DonatorWalletComponent,
-    
     DonatorQuestComponent,
     AppComponent,
     LoginComponent,
     MainLoginComponent,
+    MapsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    SidebarModule.forRoot()
+    SidebarModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDmk0ZLNenVOm3-bcdIHiMm2nBkSrdKLxw'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

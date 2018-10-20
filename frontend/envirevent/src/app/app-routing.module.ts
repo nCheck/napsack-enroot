@@ -10,6 +10,10 @@ import { DonatorTransactionComponent } from './donator-transaction/donator-trans
 import { DonatorWalletComponent } from './donator-wallet/donator-wallet.component';
 import { DonatorQuestComponent } from './donator-quest/donator-quest.component';
 import { MainLoginComponent } from './main-login/main-login.component';
+import { MapsComponent } from './maps/maps.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { AgmCoreModule } from '@agm/core';
+
 
 export const routes: Routes = [
   {
@@ -50,13 +54,18 @@ export const routes: Routes = [
         path: 'quest',
         component: DonatorQuestComponent,
       },
+      {
+        path: 'maps',
+        component: MapsComponent,
+      }
     ]
   },
 
 ];
 @NgModule({
   imports: [
-    CommonModule, RouterModule.forRoot(routes)
+    CommonModule,
+    RouterModule.forRoot(routes)
   ],
   exports: [RouterModule],
   declarations: [],
