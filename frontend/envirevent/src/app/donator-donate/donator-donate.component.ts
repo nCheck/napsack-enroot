@@ -34,7 +34,7 @@ export class DonatorDonateComponent implements OnInit {
     this.data.getDonateData().subscribe((placesData: String) => {
       this.placesArray = placesData;
       console.log(this.placesArray);
-      console.log("crappy");
+      console.log("crappy"); 
     });
 
     // this.data.postDonateData().subscribe((dat:any)=>{
