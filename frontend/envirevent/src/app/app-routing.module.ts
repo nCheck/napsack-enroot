@@ -79,7 +79,7 @@ export const routes: Routes = [
 
       {
         path: '',
-        component: CollectorComponent,
+        component: CollectorRequestComponent,
       },
       {
         path: 'verify',
