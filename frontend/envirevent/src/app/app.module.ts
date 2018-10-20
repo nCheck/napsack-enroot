@@ -23,6 +23,7 @@ import { NgQrScannerModule } from 'angular2-qrscanner';
 import { QRCodeModule } from 'angularx-qrcode';
 import { DonatorQrcodeComponent } from './donator-qrcode/donator-qrcode.component';
 
+import { CollectordetailsComponent } from './collectordetails/collectordetails.component';
 // import * as RX from "rxjs/Observable";
 
 
@@ -42,6 +43,7 @@ import { DonatorQrcodeComponent } from './donator-qrcode/donator-qrcode.componen
     CollectorRequestComponent,
     CollectorWalletComponent,
     DonatorQrcodeComponent,
+    CollectordetailsComponent,
   ],
   imports: [
     BrowserModule,
