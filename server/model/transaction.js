@@ -23,14 +23,13 @@ var tranSchema = mongoose.Schema({
     }],
 
     collectorId : String , 
-    donarId : String,
+    customerId : String,
     
     transacValue : {
         type : Number,
         default : 0.0
     }
 })
-
 
 
 

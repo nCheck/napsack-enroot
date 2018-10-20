@@ -94,3 +94,11 @@ app.listen(port , function () {
 // User.find({role:'Customer'},(err,doc)=>{
 // 	console.log(doc);
 // })
+// User.find({} , (err, doc)=>{
+// 	doc.forEach(d => {
+// 		console.log(d)
+// 		if (d.role == 'Customer'){
+// 			console.log("Role A")
+// 		}
+// 	});
+// })

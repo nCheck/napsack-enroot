@@ -2,7 +2,7 @@ var mongoose = require('mongoose')
 var User = mongoose.model('User')
 var tranMod = require('./transaction.ctrlr')
 var sortJsonArray = require('sort-json-array');
-
+var Quest = mongoose.model('Quest')
 
 
 getAllUsers = ()=>{
@@ -11,12 +11,14 @@ getAllUsers = ()=>{
 
     return new Promise( (resolve, reject)=>{
         
-        User.find({ role: 'Customer'}).populate('customerId').then(user=>{
+        User.find().populate('customerId').then(user=>{
             users = []
+            // console.log(user)
             user.forEach(d => {
-                users.push({name : d.username , points : d.customerId.wallet})
+                if ( d.role == 'Customer' )
+                    users.push({name : d.username , points : d.customerId.wallet})
             });
-            users = sortJsonArray(users , 'points')
+            users.sort(SortByPoint)
             resolve(users)
         } , err=>{
             reject(err)
@@ -27,7 +29,9 @@ getAllUsers = ()=>{
 
 
 
-
+function SortByPoint(x,y) {
+    return y.points - x.points; 
+  }
 
 
 
@@ -37,4 +41,14 @@ getAllUsers = ()=>{
 module.exports.sendLeaderboard = async(req , res)=>{
     var users = await getAllUsers()
     res.json(users)
+}
+
+module.exports.createQuest = (req , res)=>{
+    req.body.item = mongoose.Types.ObjectId(req.body.item)
+    Quest.create(req.body , (err , doc)=>{
+        res.json(doc)
+    })
+}
+
+module.exports.displayQuest = (req, res)=>{
 }
