@@ -30,6 +30,10 @@ export const routes: Routes = [
         component: DonatorDonateComponent,
       },
       {
+        path: 'donate',
+        component: DonatorDonateComponent,
+      },
+      {
         path: 'transact',
         component: DonatorTransactionComponent,
       },
