@@ -1,6 +1,6 @@
 var express=require('express');
 var router=express.Router();
-var User=require('../data/user');
+var User=require('../model/user');
 var passport=require('passport');
 var userCtrlr=require('../controllers/user.ctrlr');
 
