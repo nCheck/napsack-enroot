@@ -5,3 +5,9 @@ mongoose.connect(database);
 mongoose.connection.on('connected' , () =>{
 	console.log('connected')
 });
+
+require('./recycle')
+require('./transaction')
+require('./wallet')
+require('./collector')
+require('./donator')
