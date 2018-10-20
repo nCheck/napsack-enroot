@@ -17,7 +17,7 @@ import { CollectorVerifyComponent } from './collector-verify/collector-verify.co
 import { CollectorRequestComponent } from './collector-request/collector-request.component';
 import { CollectorWalletComponent } from './collector-wallet/collector-wallet.component';
 import { DonatorQrcodeComponent } from './donator-qrcode/donator-qrcode.component';
-
+import { DonatorLeaderboardComponent } from './donator-leaderboard/donator-leaderboard.component';
 
 export const routes: Routes = [
   {
@@ -65,6 +65,10 @@ export const routes: Routes = [
       {
         path: 'complete',
         component: DonatorQrcodeComponent,
+      },
+      {
+        path: 'leaderboard',
+        component: DonatorLeaderboardComponent,
       }
     ]
   },
