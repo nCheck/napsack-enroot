@@ -5,7 +5,7 @@ var transCtrl = require('../controller/transaction.ctrlr')
 router.route('/dummy')
     .post(transCtrl.dummyPost)
     .get((req, res)=>{
-        res.send("Hello Ashley")
+        res.json({message : "Hello"})
     })
 
 

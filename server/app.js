@@ -12,10 +12,10 @@ require('./model/db')
 ///Models
 var User = require('./model/user');
 var Recycle = require('./model/recycle')
-
+var Customer = require('./model/customer')
 app.get('',(req,res)=>
 {
-    res.send('1');
+    res.send('Ek No.');
 })
 
 
@@ -64,3 +64,25 @@ app.listen(port , function () {
 // Recycle.create({item : 'TetraPacks' , value : 0.2 })
 // Recycle.create({item : 'Card board Box' , value : 0.2 })
 // Recycle.create({item : 'Wrappers' , value : 0.2 })
+
+// Customer.create({name:"Nehal Kalnad" , phoneNo : 9762622540
+// 	, transactions : [mongoose.Types.ObjectId("5bcb1a3c6f9b1d6a5a6812cf")]} , (err,  doc)=>{
+// 		console.log(doc)
+// 	})
+
+// Customer.findById('5bcb4262bd80d525184534fd').populate('transactions').then(res=>{
+// 	console.log(res)
+// })
+
+// User.findById("5bcaf43412fdd540943678a8").populate({path : 'customerId' , populate : {
+// 	path : 'transactions',
+// 	model : 'Transaction'
+// }}).then(res=>{
+// 	console.log(res.customerId.transactions)
+// }, err=>{
+// 	console.log(err)
+// })
+
+// User.updateOne({username : 'ncheck'} , {customerId : mongoose.Types.ObjectId("5bcaf43412fdd540943678a8")} , (err, doc)=>{
+// 	console.log(doc)
+// })

@@ -6,7 +6,7 @@ var tranSchema = mongoose.Schema({
 
     isPending : {
         type : Boolean,
-        default : false
+        default : true
     } ,
 
     transacDate : Date,

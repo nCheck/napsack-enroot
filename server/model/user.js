@@ -13,7 +13,7 @@ var userSchema = new mongoose.Schema({
 	},
 	customerId:{
 		type:Schema.Types.ObjectId,
-		ref:'User'
+		ref:'Customer'
 	},
 	collectorId:{
 		type:Schema.Types.ObjectId,

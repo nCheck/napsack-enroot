@@ -75,6 +75,7 @@ makeTrans = (data, uid)=>{
               { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012d') , count : data["Card board Box"] } ,
               { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012e') , count : data["Wrappers"] } ,
             ]
+
     console.log(data)
     transacValue = calTransac(items)
 
@@ -82,7 +83,7 @@ makeTrans = (data, uid)=>{
         transacDate : Date.now(),
         items : items,
         transacValue : transacValue,
-        donarId : mongoose.Types.ObjectId(uid)
+        customerId : mongoose.Types.ObjectId(uid)
     }
     return new Promise( (resolve , reject)=>{
         Transaction.create(query , (err, doc)=>{
@@ -96,6 +97,61 @@ makeTrans = (data, uid)=>{
     } )
 }
 
+updateTrans = (data, tid, uid)=>{
+    items = [ { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012a') , count : data["Glass Bottle"] } , 
+              { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012c') , count : data["TetraPacks"] } ,
+              { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012b') , count : data["Plastic Bottle"] } ,
+              { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012d') , count : data["Card board Box"] } ,
+              { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012e') , count : data["Wrappers"] } ,
+            ]
+            
+    transacValue = calTransac(items)
+
+    query =  {
+        transacDate : Date.now(),
+        items : items,
+        transacValue : transacValue,
+        collectorId : mongoose.Types.ObjectId(uid),
+        isPending : false
+    }
+
+    return new Promise( (resolve, reject)=>{
+        Transaction.updateOne({_id : tid},  query , (err , doc)=>{
+            if(err){
+                reject(err)
+            }
+            else{
+                resolve(doc)
+            }
+        })
+    })
+}
+
+
+getAllTransactions = (uid, role)=>{
+    return new Promise( (resolve , reject)=>{
+        if (role == 'Collector'){
+            User.findById(uid).populate({path : 'customerId' , populate : {
+                path : 'transactions',
+                model : 'Transaction'
+            }}).then(res=>{
+                resolve(res.customerId.transactions)
+            }, err=>{
+                reject(err)
+            })
+        }
+        else{
+            User.findById(uid).populate({path : 'collectorId' , populate : {
+                path : 'transactions',
+                model : 'Transaction'
+            }}).then(res=>{
+                resolve(res.collectorId.transactions)
+            }, err=>{
+                reject(err)
+            })
+        }
+    })
+}
 
 
 
@@ -117,12 +173,35 @@ module.exports.generateTransaction = async(req , res)=>{
     console.log('req is ', req.body)
     var user = await findUser(username)
     var trans = await makeTrans(req.body , user._id)
+    user.save()
+    trans.save()
     res.send(trans)
 
 }
 
+module.exports.verifyTransaction = async(req , res)=>{
+    var username = 'suyash'
+    console.log('req is ', req.body)
+    var user = await findUser(username)
+    var trans = await updateTrans(req.body, req.body.tid , user._id)
+    res.send(trans)
+    
+}
+
+module.exports.seperateTransactions = async(req , res)=>{
+    var username = 'ncheck'
+    var user = await findUser(username)
+    var transactions = await getAllTransactions(user._id , user.role)
+    res.send(transactions)
+}
+
+
+
 
 module.exports.dummyPost = (req , res)=>{
-    console.log(req)
+    console.log(req.body)
     res.send("Done")
 }
+
+
+
