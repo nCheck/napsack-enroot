@@ -9,6 +9,7 @@ import { DonatorDonateComponent } from './donator-donate/donator-donate.componen
 import { DonatorTransactionComponent } from './donator-transaction/donator-transaction.component';
 import { DonatorWalletComponent } from './donator-wallet/donator-wallet.component';
 import { DonatorQuestComponent } from './donator-quest/donator-quest.component';
+import { MainLoginComponent } from './main-login/main-login.component';
 
 export const routes: Routes = [
   {
@@ -19,6 +20,10 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'main',
+    component: MainLoginComponent
   },
   {
     path: 'donor',

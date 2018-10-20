@@ -10,6 +10,8 @@ import { DonatorTransactionComponent } from './donator-transaction/donator-trans
 import { DonatorWalletComponent } from './donator-wallet/donator-wallet.component';
 import { DonatorQuestComponent } from './donator-quest/donator-quest.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { SidebarModule } from 'ng-sidebar';
+import { MainLoginComponent } from './main-login/main-login.component';
 
 @NgModule({
   declarations: [
@@ -22,10 +24,12 @@ import { AppRoutingModule } from './/app-routing.module';
     DonatorQuestComponent,
     AppComponent,
     LoginComponent,
+    MainLoginComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SidebarModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
