@@ -3,7 +3,7 @@ var Schema = mongoose.Schema
 
 
 var tranSchema = mongoose.Schema({
-    
+
     isPending : {
         type : Boolean,
         default : false
@@ -22,10 +22,7 @@ var tranSchema = mongoose.Schema({
         }
     }],
 
-    collector : {
-        type : Schema.Types.ObjectId,
-        ref : 'Collector'
-    } , 
+    collectorId : String , 
 
     transacValue : {
         type : Schema.Types.Decimal128,

@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema
 
 
-var donSchema = Schema({
+var donSchema = mongoose.Schema({
     name : String,
     phoneNo : Number,
     wallet : {
