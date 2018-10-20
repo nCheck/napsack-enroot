@@ -17,6 +17,7 @@ import { AgmCoreModule } from '@agm/core';
 import { CollectorVerifyComponent } from './collector-verify/collector-verify.component';
 import { CollectorRequestComponent } from './collector-request/collector-request.component';
 import { CollectorWalletComponent } from './collector-wallet/collector-wallet.component';
+import { NgQrScannerModule } from 'angular2-qrscanner';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { CollectorWalletComponent } from './collector-wallet/collector-wallet.co
     SidebarModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDmk0ZLNenVOm3-bcdIHiMm2nBkSrdKLxw'
-    })
+    }),
+    NgQrScannerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

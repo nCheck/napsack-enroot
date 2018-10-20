@@ -13,6 +13,9 @@ import { MainLoginComponent } from './main-login/main-login.component';
 import { MapsComponent } from './maps/maps.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AgmCoreModule } from '@agm/core';
+import { CollectorVerifyComponent } from './collector-verify/collector-verify.component';
+import { CollectorRequestComponent } from './collector-request/collector-request.component';
+import { CollectorWalletComponent } from './collector-wallet/collector-wallet.component';
 
 
 export const routes: Routes = [
@@ -57,6 +60,29 @@ export const routes: Routes = [
       {
         path: 'maps',
         component: MapsComponent,
+      }
+    ]
+  },
+  {
+    path: 'collector',
+    component: CollectorComponent,
+    children: [
+
+      {
+        path: '',
+        component: CollectorComponent,
+      },
+      {
+        path: 'verify',
+        component: CollectorVerifyComponent,
+      },
+      {
+        path: 'request',
+        component: CollectorRequestComponent,
+      },
+      {
+        path: 'wallet',
+        component: CollectorWalletComponent,
       }
     ]
   },
