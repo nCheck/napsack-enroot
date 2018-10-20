@@ -16,6 +16,11 @@ import { MapsComponent } from './maps/maps.component';
 import { AgmCoreModule } from '@agm/core';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { CollectorVerifyComponent } from './collector-verify/collector-verify.component';
+import { CollectorRequestComponent } from './collector-request/collector-request.component';
+import { CollectorWalletComponent } from './collector-wallet/collector-wallet.component';
+import { NgQrScannerModule } from 'angular2-qrscanner';
+// import * as RX from "rxjs/Observable";
 
 
 @NgModule({
@@ -30,6 +35,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     LoginComponent,
     MainLoginComponent,
     MapsComponent,
+    CollectorVerifyComponent,
+    CollectorRequestComponent,
+    CollectorWalletComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +49,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     SidebarModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDmk0ZLNenVOm3-bcdIHiMm2nBkSrdKLxw'
-    })
+    }),
+    NgQrScannerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
