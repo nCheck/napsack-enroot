@@ -1,38 +1,41 @@
-<div class="card bg-primary text-white card-body">
-  <div align="center">Eco Wallet</div>
-</div>
-
-
-
-<div class="card bg-light text-dark">
- 
-  <div class="card-body">
-    <p>
-      Total Points : 60pts
-    </p>
-    <p>
-      Total Money : 60 rupees
-    </p>
-  </div>
-</div>
-
-<div class="card bg-primary text-white card-body">
-  <div align="center">Previous Transaction</div>
-</div>
-
-<div class="card bg-light text-dark card-body">
-    <div class="row">
-      <div class="col-2 col-md-3"><span>+60</span></div>
-      <div class="col-3 col-md-6"></div>
-      <div class="col-7 col-md-3">Spent at Store ABC</div>
-    </div>
-</div>
-
-<div class="card bg-light text-dark card-body">
-    <div class="row">
-        <div class="col-2 col-md-3"> <span>-60</span> </div>
-        <div class="col-3 col-md-6"></div>
-        <div class="col-7 col-md-3">Added at Store ABC</div>
+<div >
+    <div class="card bg-primary text-white card-body">
+        <div align="center">Eco Wallet</div>
       </div>
+      
+      
+      
+      <div class="card bg-light text-dark">
+       
+        <div class="card-body">
+          <p>
+            Total Points : 60pts
+          </p>
+          <p>
+            Total Money : 60 rupees
+          </p>
+        </div>
+      </div>
+      
+      <div class="card bg-primary text-white card-body">
+        <div align="center">Previous Transaction</div>
+      </div>
+      
+      <div class="card bg-light text-dark card-body">
+          <div class="row" [ngStyle]="{'color':addition}" >
+            <div class="col-2 col-md-3"><span>+60</span></div>
+            <div class="col-3 col-md-6"></div>
+            <div class="col-7 col-md-3">Spent at Store ABC</div>
+          </div>
+      </div>
+      
+      <div class="card bg-light text-dark card-body">
+          <div class="row" [ngStyle]="{'color':subtraction}">
+              <div class="col-2 col-md-3"> <span>-60</span> </div>
+              <div class="col-3 col-md-6"></div>
+              <div class="col-7 col-md-3">Added at Store ABC</div>
+            </div>
+      </div>
+      <br>
+      
 </div>
-<br>

@@ -6,7 +6,8 @@ import { DataService } from '../data.service';
   styleUrls: ['./donator-wallet.component.css']
 })
 export class DonatorWalletComponent implements OnInit {
-
+  addition:String="green";
+  subtraction:String="red";
   constructor(private data:DataService) { 
 
   }
