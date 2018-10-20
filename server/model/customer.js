@@ -7,7 +7,7 @@ var customerSchema = new Schema({
     phoneNo : Number,
     wallet : {
         type : Schema.Types.ObjectId,
-        ref : 'Donator'        
+        ref : 'Wallet'        
     } ,
     transactions : [{
         type : Schema.Types.ObjectId,
@@ -24,4 +24,4 @@ var customerSchema = new Schema({
 
 
 
-module.exports=mongoose.model('Customer' , customerSchema)
+module.exports = mongoose.model('Customer' , customerSchema)

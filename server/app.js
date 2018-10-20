@@ -38,11 +38,12 @@ app.use(parser.urlencoded({extended:true}));
 app.use(parser.json());
 
 
-
+///Require Routes
 var authRoute=require('./routes/auth.js');
-
-
+var transRoute = require('./routes/trans')
+///Use routes
 app.use('/auth',authRoute);
+app.use('/transac', transRoute)
 
 app.listen(port , function () {
 	console.log('Site is active on localhost:' + port+'/');
