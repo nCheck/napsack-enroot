@@ -61,7 +61,7 @@ import {ProgressBarModule} from 'angular-progress-bar';
     }),
     NgQrScannerModule,
     QRCodeModule,
-    ProgressBarModule
+    ProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

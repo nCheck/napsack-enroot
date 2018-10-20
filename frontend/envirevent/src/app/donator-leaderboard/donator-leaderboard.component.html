@@ -1,16 +1,39 @@
 
-  <div class="card  text-white" style="background-color: gold">
-    <div class="card-body ;text-align:center">Player A</div>
-  </div>
-  <div class="card  text-white" style="background-color: silver" >
-    <div class="card-body ;text-align:center">Player B</div>
-  </div>
-  <div class="card  text-white" style="background-color:brown">
-    <div class="card-body ;text-align:center">Player C</div>
-  </div>
-  <div class="card  text-black" style="background-color:rgb(208, 255, 190)">
-    <div class="card-body ;text-align:center">Player D</div>
-  </div>
+<h3>LEADERBOARD</h3>
+<div class="row">
+  <div class="col-4">  <button type="button" class="btn btn-block btn-lg">Monthly</button></div>
+  <div class="col-4">  <button type="button" class="btn btn-block btn-lg" disabled>Weekly</button></div>
+  <div class="col-4">  <button type="button" class="btn btn-block btn-lg" disabled>Daily</button></div>
+</div>
+      <ng-container *ngFor="let item of leaderboard;let i =index">
+          <div class="card-body ;text-align:center" style="background-color: rgb(244, 247, 242)">
+              <div class="row">
+              <div class="card-body col-2">{{ i+1 }}</div>
+              <div class="card-body col-6">
+                  <ng-container *ngIf="filter(i+1)">
+                      <i [ngStyle]="{'color':color(i+1)}" class="fas fa-trophy fa-2x"></i>
+                    </ng-container>
+                {{ item.name }}</div>
+
+              <div class="card-body col-4">{{ item.points }}</div>
+            </div>
+              
+            </div>
+
+    
+      </ng-container>
+
+
+
+  <!-- <div class="card  text-white" style="background-color: silver" >
+      <div class="card-body ;text-align:center">Player B</div>
+    </div>
+    <div class="card  text-white" style="background-color:brown">
+      <div class="card-body ;text-align:center">Player C</div>
+    </div>
+    <div class="card  text-black" style="background-color:rgb(208, 255, 190)">
+      <div class="card-body ;text-align:center">Player D</div>
+    </div> -->
   
   
 

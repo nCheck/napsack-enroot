@@ -31,7 +31,7 @@ export class DonatorDonateComponent implements OnInit {
 
     console.log(this.selection);
     console.log(this.data.postDonateData(this.dataPOST));
-    this.data.getDonateData().subscribe((placesData: String) => {
+    this.data.getLeaderboardData().subscribe((placesData: String) => {
       this.placesArray = placesData;
       console.log(this.placesArray);
       console.log("crappy"); 
