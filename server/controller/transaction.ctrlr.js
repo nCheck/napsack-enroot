@@ -147,10 +147,9 @@ updateInventory=(r,collector,transaction)=>{
         trans.findById(transaction._id,(err,docc)=>{
             invent.forEach(items=>{
                 docc.items.forEach(ditems=>{
-                    if(items['item']===ditems['item'])
-                    {
+                    
                         items['count']+=ditems['count'];
-                    }
+                    
                 })
                 
             })
