@@ -50,5 +50,13 @@ module.exports.createQuest = (req , res)=>{
     })
 }
 
-module.exports.displayQuest = (req, res)=>{
+module.exports.sendQuest = (req, res)=>{
+    Quest.find({} , (err, doc)=>{
+        if(err){
+            res.send('error')
+        }
+        else{
+            res.json(doc)
+        }
+    })
 }
