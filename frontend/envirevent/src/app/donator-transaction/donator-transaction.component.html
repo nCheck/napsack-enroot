@@ -1,74 +1,89 @@
 <div class="container"  style="margin: 100px">
-    <h1>PENDING</h1>
-  
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle"  type="button" data-toggle="dropdown" (click)="isActive = !isActive">TRANSACTION MANAGEMENT
-      <span class="caret"></span></button>
-      <ul class="dropdown-menu" [ngClass]="{show : isActive}">
-        <li><a href="#"><div class="form-group col-10">
-        <span><input [(ngModel)]="tetraPack" type="number" class="col" id="tetraPack" name="tetraPack" placeholder="Tetra Pack">
-        <label for="points">Points:</label>
-              <input type="text" class="col" id="points">
-          <button type="submit" class="btn btn-primary" >Submit</button>
-        </span>
+    <h1 align="center">PENDING</h1>
+   
+      <button class="btn btn-primary dropdown-toggle col-lg-11" type="button" (click)="toggle()">TRANSACTION MANAGEMENT
+        <span class="caret"></span></button>
+       
+      <ng-container *ngIf="show">    
+        <br><br>
+        <ul >
+            <li><a><div class="form-group col-10">
+          <span><input [(ngModel)]="tetraPack" type="number" class=" col-lg-4" id="tetraPack" name="tetraPack" placeholder="Tetra Pack">
+            <span class="col-lg-1"></span>
+            <label for="points">Points:abc points</label>
+          
+              <span class="col-lg-1"></span>
+              <button type="submit" class="btn btn-primary col-lg-12" >Submit</button>
+         </span>
+
           </div></a></li>
-        <li><a href="#"><div class="form-group col-10">
-            <span><input [(ngModel)]="cardboard" type="number" class="col" id="cardboard" name="cardboard" placeholder="Card Board">
-            <label for="points">Points:</label>
-              <input type="text" class="col" id="points">
-              <button type="submit" class="btn btn-primary" >Submit</button>
+        
+          <li><a  ><div class="form-group col-10">
+            <span><input [(ngModel)]="cardboard" type="number" class=" col-lg-4" id="cardboard" name="cardboard" placeholder="Card Board">
+              <span class="col-lg-1"></span>
+              <label for="points">Points:abc points</label>
+              <span class="col-lg-1"></span>
+              <button type="submit" class="btn btn-primary col-lg-12" >Submit</button>
             </span>
              </div></a></li>
-        <li><a href="#"> <div class="form-group col-10">
-              <span><input [(ngModel)]="glassBottle" type="number" class="col" id="glassBottle" name="glassBottle" placeholder="Glass Bottle">
-              <label for="points">Points:</label>
-              <input type="text" class="col" id="points">
-                <button type="submit" class="btn btn-primary" >Submit</button>
+        <li><a  > <div class="form-group col-10">
+              <span><input [(ngModel)]="glassBottle" type="number" class=" col-lg-4" id="glassBottle" name="glassBottle" placeholder="Glass Bottle">
+                <span class="col-lg-1"></span>
+                <label for="points">Points:abc points</label>
+               <span class="col-lg-1"></span>  
+              <button type="submit" class="btn btn-primary col-lg-12" >Submit</button>
               </span>
                </div></a></li>
-        <li><a href="#"><div class="form-group col-10">
-              <span><input [(ngModel)]="plasticBottle" type="number" class="col" id="plasticBottle" name="plasticBottle" placeholder="Platic Bottle">
-              <label for="points">Points:</label>
-              <input type="text" class="col" id="points">
-                <button type="submit" class="btn btn-primary" >Submit</button>
+        <li><a  ><div class="form-group col-10">
+              <span><input [(ngModel)]="plasticBottle" type="number" class=" col-lg-4" id="plasticBottle" name="plasticBottle" placeholder="Platic Bottle">
+                <span class="col-lg-1"></span>
+                <label for="points">Points:abs points</label>
+              <span class="col-lg-1"></span> 
+              <button type="submit" class="btn btn-primary col-lg-12" >Submit</button>
               </span>
                  </div></a></li>
-      </ul>
-    </div>
+          </ul>
+    </ng-container>
+
     <br><br>
-      <h1>COMPLETED</h1>
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">TRANSACTION MANAGEMENT
+      <h1 align="center">COMPLETED</h1>
+      
+        <button class="btn btn-primary dropdown-toggle col-lg-11" type="button" (click)="toggleA()">TRANSACTION MANAGEMENT
         <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a href="#"><div class="form-group col-10">
-          <span><input [(ngModel)]="tetraPack" type="number" class="col" id="tetraPack" name="tetraPack" placeholder="Tetra Pack">
-          <label for="points">Points:</label>
-                <input type="text" class="col" id="points">
-            <button type="submit" class="btn btn-primary" >Submit</button>
+        
+        <ng-container *ngIf="showA">  
+        <ul >
+          <li><a  ><div class="form-group col-lg-10">
+          <span> <label type="text" class=" col-lg-4 col-lg-12" id="points">tetra pack : 10 bottles</label>
+            <span class="col-lg-1"></span>
+          <label for="points">Points:abc points</label>
+            <span class="col-lg-1"></span>
           </span>
             </div></a></li>
-          <li><a href="#"><div class="form-group col-10">
-              <span><input [(ngModel)]="cardboard" type="number" class="col" id="cardboard" name="cardboard" placeholder="Card Board">
-              <label for="points">Points:</label>
-                <input type="text" class="col" id="points">
-                <button type="submit" class="btn btn-primary" >Submit</button>
-              </span>
-               </div></a></li>
-          <li><a href="#"> <div class="form-group col-10">
-                <span><input [(ngModel)]="glassBottle" type="number" class="col" id="glassBottle" name="glassBottle" placeholder="Glass Bottle">
-                <label for="points">Points:</label>
-                <input type="text" class="col" id="points">
-                  <button type="submit" class="btn btn-primary" >Submit</button>
-                </span>
-                 </div></a></li>
-          <li><a href="#"><div class="form-group col-10">
-                <span><input [(ngModel)]="plasticBottle" type="number" class="col" id="plasticBottle" name="plasticBottle" placeholder="Platic Bottle">
-                <label for="points">Points:</label>
-                <input type="text" class="col" id="points">
-                  <button type="submit" class="btn btn-primary" >Submit</button>
-                </span>
-                   </div></a></li>
+
+          <li><a  ><div class="form-group col-lg-10">
+          <span> <label type="text" class=" col-lg-4" id="points">tetra pack : 10 bottles</label>
+            <span class="col-lg-1"></span>
+          <label for="points">Points:abc points</label>
+            <span class="col-lg-1"></span>
+          </span>
+            </div></a></li>
+
+          <li><a  ><div class="form-group col-lg-10">
+          <span> <label type="text" class=" col-lg-4" id="points">tetra pack : 10 bottles</label>
+            <span class="col-lg-1"></span>
+          <label for="points">Points:abc points</label>
+            <span class="col-lg-1"></span>
+          </span>
+            </div></a></li>
+
+          <li><a  ><div class="form-group col-lg-10">
+          <span> <label type="text" class=" col-lg-4" id="points">tetra pack : 10 bottles</label>
+            <span class="col-lg-1"></span>
+          <label for="points">Points:abc points</label>
+            <span class="col-lg-1"></span>
+          </span>
+            </div></a></li>
         </ul>
-      </div>
-  </div>
+      </ng-container>
+  

@@ -18,6 +18,7 @@ import { CollectorRequestComponent } from './collector-request/collector-request
 import { CollectorWalletComponent } from './collector-wallet/collector-wallet.component';
 import { DonatorQrcodeComponent } from './donator-qrcode/donator-qrcode.component';
 import { DonatorLeaderboardComponent } from './donator-leaderboard/donator-leaderboard.component';
+import { DonatorEventsComponent } from './donator-events/donator-events.component';
 
 export const routes: Routes = [
   {
@@ -69,6 +70,10 @@ export const routes: Routes = [
       {
         path: 'leaderboard',
         component: DonatorLeaderboardComponent,
+      },
+      {
+        path: 'events',
+        component: DonatorEventsComponent,
       }
     ]
   },

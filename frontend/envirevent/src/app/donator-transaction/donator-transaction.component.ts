@@ -7,13 +7,24 @@ import { DataService } from '../data.service';
 })
 export class DonatorTransactionComponent implements OnInit {
 
-  isActive:boolean=true;
-  
-  constructor(private data:DataService) { 
+  public show:boolean = false;
+  public showA:boolean = false;
+ 
+  constructor(private data: DataService) {
 
   }
 
   ngOnInit() {
+  }
+
+  toggle() {
+    this.show = !this.show;
+
+  }
+
+  toggleA() {
+    this.showA = !this.showA;
+
   }
 
 }
