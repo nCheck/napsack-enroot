@@ -180,7 +180,7 @@ module.exports.generateTransaction = async(req , res)=>{
     var trans = await makeTrans(req.body , user)
     user.save()
     trans.save()
-    res.json(trans)
+    res.json({id : trans._id , status : 'OK'})
 
 }
 
