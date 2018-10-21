@@ -10,18 +10,17 @@ export class DataService {
   headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   options = { headers: this.headers };
   constructor(public http: HttpClient) { }
-  uniqueValue:String="";
 
-  postDonateData(body):Observable<any>{
+
+  postDonateData(body):void{
     console.log('posted from data service');
-    return this.http.post('/api/transac/generate', body,this.options )
+    this.http.post('/api/api/dummy', body,this.options ).subscribe(
+      dat => console.log(dat)
+    );
 
   }
   getDonateData(): Observable<any> {
-    return this.http.get('/api/transac/generate');
-  }
-  postQRCodeData(body):Observable<any>{
-    return this.http.post('/api/transac/generate', body,this.options );
+    return this.http.get('/api/transac/test');
   }
   getLeaderboardData(): Observable<any> {
     console.log(this.http.get('/api/quest/leaderboard'));
@@ -37,6 +36,10 @@ export class DataService {
     return this.http.post('/api/auth/register', body,this.options );
 
 
+  }
+  getWalletData(): Observable<any> {
+    console.log(this.http.get('/api/transac/wallet'));
+    return this.http.get('/api/transac/wallet');
   }
 
 }
