@@ -42,7 +42,7 @@ module.exports.allotPickup = (r,user)=>{
            if(docc)
             {
                 console.log('alloted schedule');
-                Collector.update({_id:doc_id},{$push:{pickup:docc}});
+                Collector.update({_id:doc._id},{$push:{pickup:docc}});
                 resolve(docc+" "+doc +"collect");
             }
         })    //doubt of trans=query

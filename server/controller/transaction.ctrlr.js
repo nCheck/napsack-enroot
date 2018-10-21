@@ -67,7 +67,7 @@ calTransac = (items)=>{
 
 //Hardcode points, points can be searched later
 
-makeTrans = (data, user)=>{
+makeTrans = (data, user)=>{//data is req.body
     items = [ { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012a') , count : data["Glass Bottle"] } , 
               { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012c') , count : data["TetraPacks"] } ,
               { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012b') , count : data["Plastic Bottle"] } ,
