@@ -13,7 +13,7 @@ export class DonatorTransactionComponent implements OnInit {
   constructor(private data: DataService) {
 
   }
-
+  
   ngOnInit() {
   }
 

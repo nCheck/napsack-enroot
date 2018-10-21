@@ -28,7 +28,9 @@ import {ProgressBarModule} from 'angular-progress-bar';
 import { DonatorEventsComponent } from './donator-events/donator-events.component';
 import { DonatorMainpageComponent } from './donator-mainpage/donator-mainpage.component';
 import { CollectorMainpageComponent } from './collector-mainpage/collector-mainpage.component';
-
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { NgxBarcodeModule } from 'ngx-barcode';
+import { BarecodeScannerLivestreamModule } from 'ngx-barcode-scanner';
 // import * as RX from "rxjs/Observable";
 
 
@@ -59,6 +61,9 @@ import { CollectorMainpageComponent } from './collector-mainpage/collector-mainp
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ZXingScannerModule,
+    BarecodeScannerLivestreamModule,
+    NgxBarcodeModule,
     // HttpClient,
     HttpModule,
     SidebarModule.forRoot(),
