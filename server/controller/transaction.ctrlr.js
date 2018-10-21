@@ -4,7 +4,7 @@ const Transaction = mongoose.model('Transaction')
 const Collector = mongoose.model('Collector')
 const Customer = mongoose.model('Customer')
 const Code = mongoose.model('Code')
-
+var shortid = require('shortid');
 
 const DATA = {
     "Glass Bottle": {
@@ -195,13 +195,14 @@ module.exports = {
 ///////////////////////EXPORTS
 
 module.exports.generateTransaction = async(req , res)=>{
-    var username = 'ncheck'
+    var username = req.user.username
     console.log('req is ', req.body)
     var user = await findUser(username)
     var trans = await makeTrans(req.body , user)
     user.save()
     trans.save()
     Code.create({transId : trans._id} , (err,doc)=>{
+        console.log(doc)
         res.json({ code : doc.code , status : 'OK' })
     })
     

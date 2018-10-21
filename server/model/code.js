@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema
-var uniqid = require('uniqid');
+var shortid = require('shortid');
 
 var codeSchema = mongoose.Schema({
     code : {
         type : String,
         unique : true,
-        default : uniqid.time()
+        default : shortid.generate
     } ,
     transId : String ,
     isAlive : {
