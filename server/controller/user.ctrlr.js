@@ -124,3 +124,18 @@ Event.create({eventName:r.eventName,description:r.description,rules:Rules,eventT
 
 		})
 	}
+module.exports.sendBal=(req,res)=>{
+	User.findByOne({username:req.user.username},(err,doc)=>{
+		if(doc.role==='Collector')
+			res.json({balance:doc.wallet,status:'ok'})
+		else
+			res.json({balance:doc.wallet,status:'ok'})
+	})
+}
+
+module.exports.spend=(req,res)=>{
+	User.findOne({username:req.user.username},(err,doc)=>{
+		doc.wallet-=req.balance;
+		res.json({amountLeft:doc.wallet,status:'ok'})
+	})
+}
