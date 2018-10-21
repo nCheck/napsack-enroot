@@ -84,7 +84,7 @@ calTransac = (items)=>{
 
 //Hardcode points, points can be searched later
 
-makeTrans = (data, user)=>{//data is req.body
+module.exports.makeTrans = (data, user)=>{//data is req.body
     items = [ { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012a') , count : data["Glass Bottle"] } , 
               { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012c') , count : data["TetraPacks"] } ,
               { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012b') , count : data["Plastic Bottle"] } ,
@@ -100,9 +100,8 @@ makeTrans = (data, user)=>{//data is req.body
         items : items,
         transacValue : transacValue,
         customerId : mongoose.Types.ObjectId(user.customerId),
-        collectorId:mongoose.Types.ObjectId(user.collectorId)
     }
-    return new Promise( (resolve , reject)=>{
+    
         Transaction.create(query , (err, doc)=>{
             if (err){
                 reject(err)
@@ -111,7 +110,7 @@ makeTrans = (data, user)=>{//data is req.body
                 resolve(doc)
             }
         })
-    } )
+    
 }
 
 updateTrans = (data, tid)=>{
@@ -123,13 +122,6 @@ updateTrans = (data, tid)=>{
             ]
             
     transacValue = calTransac(items)
-
-    query =  {
-        transacDate : Date.now(),
-        items : items,
-        transacValue : transacValue,
-        isPending : false
-    }
 
     return new Promise( (resolve, reject)=>{
         Transaction.findOne({_id : tid} , (err , doc)=>{
@@ -205,7 +197,7 @@ module.exports = {
 }
 
 ///////////////////////EXPORTS
-
+//GENERATING TRANSACTION FOR CUSTOMER
 module.exports.generateTransaction = async(req , res)=>{
     var username = 'ncheck'
     console.log('req is ', req.body)
@@ -241,7 +233,7 @@ module.exports.verifyTransaction = async(req , res)=>{
 
     console.log('req is ', req.body)
     var user = await findUser(username)
-    var trans = await updateTrans(req.body, req.body.tid , user)
+    var trans = await updateTrans(req.body, req.body.tid )
     var inventory = await updateInventory(req.body,user.collectorId,trans)
     var uQuests = user.quests
 
