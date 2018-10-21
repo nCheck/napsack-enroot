@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Customer=require('../model/customer');
 var Collector=require('../model/collector');
+var Event= mongoose.model('Event');
 
 //===To display all users =============
 
@@ -75,6 +76,51 @@ if(req.user.role==='Customer')
 
 	}
 
+}
+
+findUser = (username)=>{
+    return new Promise( (resolve, reject)=>{
+        User.findOne({
+            username : username
+        }, (err , doc)=>{
+            if(err){
+                reject(err)
+            }
+            else{
+                resolve(doc)
+            }
+        })
+    })
+}
+
+
+module.exports.createEvent=(req,res)=>{
+var user=findUser(req.user.username);
+
+var r=req.body;
+var r1=r.rule1,
+	r2=r.rule2,
+	r3=r.rule3
+var Rules={r1,r2,r3};
+Event.create({eventName:r.eventName,description:r.description,rules:Rules,eventType:r.eventType,eventMode:r.eventMode,startDate:r.startDate,endDate:r.endDate,organised_by:user.customerId},(err,doc)=>{
+	if(err)
+	console.log(err);
+	else{
+		console.log("Event created "+doc);
+
+		}
+		res.json({status:"Success man"});
+	}
+)
 
 }
-	
+	module.exports.ongoingEvent=(req,res)=>{
+		var events=[];
+		Event.find({},(err,doc)=>{
+			if(doc.startDate<=Date.now() && doc.endDate>=Date.now())
+			{
+				events.push(doc);
+			}
+
+		})
+	}

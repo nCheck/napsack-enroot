@@ -1,7 +1,7 @@
 var express=require('express');
 var router=express.Router();
 var transCtrl = require('../controller/transaction.ctrlr')
-
+var user=require('../controller/user.ctrlr');
 router.route('/dummy')
     .post(transCtrl.dummyPost)
     .get((req, res)=>{
@@ -13,6 +13,8 @@ router.route('/user')
         res.send(req.user)
     })
 
-
+router
+.route('/createEvent')
+.post(user.createEvent)
 
 module.exports = router
