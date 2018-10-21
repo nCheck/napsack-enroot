@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 @Component({
   selector: 'app-donator-donate',
   templateUrl: './donator-donate.component.html',
@@ -13,7 +12,7 @@ export class DonatorDonateComponent implements OnInit {
   glassBottle: Number = 0;
   plasticBottle: Number = 0;
   selection: Number[] = [];
-  placesArray: any;
+  placesArray: String;
   dataPOST = {};
   public show:boolean = false;
 
@@ -31,18 +30,12 @@ export class DonatorDonateComponent implements OnInit {
     }
 
     console.log(this.selection);
-    console.log();
-    this.data.postDonateData(this.dataPOST).subscribe((placesData: any) => {
+    console.log(this.data.postDonateData(this.dataPOST));
+    this.data.getLeaderboardData().subscribe((placesData: String) => {
       this.placesArray = placesData;
-      this.data.uniqueValue=this.placesArray.id;
-      console.log(this.placesArray.id);
-      this.router.navigate(['donor/complete']);
+      console.log(this.placesArray);
+      console.log("crappy"); 
     });
-    // this.data.getLeaderboardData().subscribe((placesData: String) => {
-    //   this.placesArray = placesData;
-    //   console.log(this.placesArray);
-    //   console.log("crappy"); 
-    // });
 
     // this.data.postDonateData().subscribe((dat:any)=>{
     //   dat => console.log(dat);
@@ -51,8 +44,9 @@ export class DonatorDonateComponent implements OnInit {
     this.dataPOST = {};
   }
 
+  constructor(private data: DataService) {
 
-  constructor(private data: DataService, private route: ActivatedRoute,private router: Router) { }
+  }
 
   ngOnInit() {
 

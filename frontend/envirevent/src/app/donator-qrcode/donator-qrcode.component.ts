@@ -12,7 +12,6 @@ export class DonatorQrcodeComponent implements OnInit {
     this.myAngularxQrCode = '12345@67890';
    }
 
-
   ngOnInit() {
   }
 
