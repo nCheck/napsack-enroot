@@ -131,7 +131,7 @@ module.exports.ongoingEvent=(req,res)=>{
 module.exports.sendBal=(req,res)=>{
 	User.findOne({username:req.user.username},(err,doc)=>{
 		
-	if(doc.role==='Collector')
+	if(doc.role != 'Collector')
 	{
 		Customer.findById(doc.customerId,(err,docc)=>{
 			res.json({balance:docc.wallet,status:'ok'})
