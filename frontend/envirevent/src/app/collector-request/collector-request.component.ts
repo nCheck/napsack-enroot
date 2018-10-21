@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class CollectorRequestComponent implements OnInit {
 
   constructor() { }
-
+  onSubmission():void{
+    
+  }
   ngOnInit() {
   }
 
