@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,6 +14,7 @@ export class LoginComponent implements OnInit {
   usernameLogin:String="";
   passwordLogin:String="";
   checkBox:Number=1;
+  data1:any;
 dataPOST={};
 
   
@@ -32,7 +35,15 @@ loginClick():void{
     "password":this.passwordLogin,
     "type":"login",
   }
-  this.data.postLoginData(this.dataPOST);
+  this.data.postLoginData(this.dataPOST).subscribe((placesData: any[]) => {
+  this.data1=placesData;
+    console.log(this.data1.role);
+    if(this.data1.role=="Customer")
+    this.router.navigate(['/donor']);
+    else
+    this.router.navigate(['/collector']);
+
+  });
   this.dataPOST={};
   console.log("login clicked");
 
@@ -59,7 +70,9 @@ onSelectCheckBox(id:Number){
   this.checkBox=id;
 }
 
-  constructor(private data:DataService) { }
+  constructor(private data:DataService,  private route: ActivatedRoute,private router: Router) { 
+
+  }
 
   ngOnInit() {
   }
