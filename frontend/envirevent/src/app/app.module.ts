@@ -25,6 +25,8 @@ import { DonatorQrcodeComponent } from './donator-qrcode/donator-qrcode.componen
 import { CollectordetailsComponent } from './collectordetails/collectordetails.component';
 import { DonatorLeaderboardComponent } from './donator-leaderboard/donator-leaderboard.component';
 import {ProgressBarModule} from 'angular-progress-bar';
+import { DonatorMainpageComponent } from './donator-mainpage/donator-mainpage.component';
+import { CollectorMainpageComponent } from './collector-mainpage/collector-mainpage.component';
 
 // import * as RX from "rxjs/Observable";
 
@@ -47,6 +49,8 @@ import {ProgressBarModule} from 'angular-progress-bar';
     DonatorQrcodeComponent,
     CollectordetailsComponent,
     DonatorLeaderboardComponent,
+    DonatorMainpageComponent,
+    CollectorMainpageComponent,
   ],
   imports: [
     BrowserModule,
