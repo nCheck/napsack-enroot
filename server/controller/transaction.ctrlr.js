@@ -3,6 +3,7 @@ const User = require('../model/user')
 const Transaction = mongoose.model('Transaction')
 const Collector = mongoose.model('Collector')
 const Customer = mongoose.model('Customer')
+const Code = mongoose.model('Code')
 
 const DATA = {
     "Glass Bottle": {
@@ -31,6 +32,22 @@ const DATA = {
         "count" : 0
     }
 }
+
+
+findTrans = (tid)=>{
+    return new Promise( (resolve, reject)=>{
+        Transaction.findOne({_id : tid} , (err , doc)=>{
+            if(err){
+                reject(err)
+            }else{
+                resolve(doc)
+            }
+        })
+    })    
+}
+
+
+
 
 
 
@@ -148,6 +165,8 @@ updateInventory=(r,collector,transaction)=>{
         })
     })
     )}
+
+
 getAllTransactions = (uid, role)=>{
     return new Promise( (resolve , reject)=>{
         if (role == 'Customer'){
@@ -175,6 +194,12 @@ getAllTransactions = (uid, role)=>{
 }
 
 
+
+
+
+
+
+
 module.exports = {
     findUser
 }
@@ -188,23 +213,41 @@ module.exports.generateTransaction = async(req , res)=>{
     var trans = await makeTrans(req.body , user)
     user.save()
     trans.save()
-    res.json({id : trans._id , status : 'OK'})
+    Code.create({transId : trans._id} , (err , doc)=>{
+        res.json({id : doc.code , status : 'OK'})
+    })
+    
 
 }
 
+
+module.exports.verifyCode = async(req , res)=>{
+    var code = req.body.code
+    Code.find({code : code} , async(err , doc)=>{
+        if (err){
+            res.send({status : false })
+        }
+        else{
+            var trans = await findTrans( doc.transId )
+            res.json({status : true , trans  : trans })
+        }
+    } )
+}
+
+
 module.exports.verifyTransaction = async(req , res)=>{
     var username = 'shreya'
+    var code = req.body.code
+
     console.log('req is ', req.body)
     var user = await findUser(username)
     var trans = await updateTrans(req.body, req.body.tid , user)
     var inventory = await updateInventory(req.body,user.collectorId,trans)
     var uQuests = user.quests
-    for(i = 0 ; i < uQuests.length ; i++){
-        for( j = 0 ; j < trans.items.length ; j++){
 
-        }
-    }
-    res.json(trans)
+    res.json({status : true})
+
+
     
 }
 

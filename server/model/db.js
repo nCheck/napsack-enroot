@@ -6,7 +6,7 @@ mongoose.connection.on('connected' , () =>{
 	console.log('connected')
 });
 
-
+require('./code')
 require('./recycle')
 require('./quest')
 require('./tempQuest')
