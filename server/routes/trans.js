@@ -6,6 +6,9 @@ var transCtrl = require('../controller/transaction.ctrlr')
 router.route('/generate')
     .post(transCtrl.generateTransaction)
 
+router.route('/cverify')
+    .post(transCtrl.verifyCode)    
+
 router.route('/verify')
     .post(transCtrl.verifyTransaction)
 
