@@ -37,5 +37,9 @@ export class DataService {
 
 
   }
+  getWalletData(): Observable<any> {
+    console.log(this.http.get('/api/transac/wallet'));
+    return this.http.get('/api/transac/wallet');
+  }
 
 }

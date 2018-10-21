@@ -8,10 +8,19 @@ import { DataService } from '../data.service';
 export class DonatorWalletComponent implements OnInit {
   addition:String="green";
   subtraction:String="red";
+  placesArray:any;
+  
   constructor(private data:DataService) { 
 
   }
-
+  onSubmit():void{
+    this.data.getWalletData().subscribe((placesData: any) => {
+      this.placesArray = placesData;
+      
+      console.log(this.placesArray);
+      console.log("crappy"); 
+    });
+  }
   ngOnInit() {
   }
 
