@@ -16,12 +16,13 @@ export class DonatorWalletComponent implements OnInit {
   onSubmit():void{
     this.data.getWalletData().subscribe((placesData: any) => {
       this.placesArray = placesData;
-      
+
       console.log(this.placesArray);
       console.log("crappy"); 
     });
   }
   ngOnInit() {
+    this.onSubmit();
   }
 
 }
