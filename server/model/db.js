@@ -9,6 +9,7 @@ mongoose.connection.on('connected' , () =>{
 
 require('./recycle')
 require('./quest')
+require('./tempQuest')
 require('./transaction')
 require('./pickup')
 require('./collector')

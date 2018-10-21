@@ -37,7 +37,7 @@ router
 router
 .route('/login')
 .get(function(req,res){
-	res.render('login.ejs')
+	res.json({status : 'OK', role : req.user.role})
 })
 .post(passport.authenticate("local",),userCtrlr.viewingRegion)//middleware for checking database
 

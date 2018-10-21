@@ -7,7 +7,7 @@ var Event= mongoose.model('Event');
 //===To display all users =============
 
 module.exports.viewingRegion=(req,res)=>{
-
+		console.log("Hello , im loggin in")
 		if(req.user.role==='Customer'){
 			res.json({role:'Customer' , status : true});
 		}	
