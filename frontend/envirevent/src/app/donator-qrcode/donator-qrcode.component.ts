@@ -5,11 +5,12 @@ import { DataService } from '../data.service';
   templateUrl: './donator-qrcode.component.html',
   styleUrls: ['./donator-qrcode.component.css']
 })
-export class DonatorQrcodeComponent implements OnInit {
-  public myAngularxQrCode: string = null;
 
-  constructor() {
-    this.myAngularxQrCode = '12345@67890';
+export class DonatorQrcodeComponent implements OnInit {
+  public myAngular: string = null;
+
+  constructor(data:DataService) {
+    //  this.myAngular = this.data.u
    }
 
   ngOnInit() {
