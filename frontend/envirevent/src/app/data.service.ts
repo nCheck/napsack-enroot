@@ -26,18 +26,15 @@ export class DataService {
     console.log(this.http.get('/api/quest/leaderboard'));
     return this.http.get('/api/quest/leaderboard');
   }
-  postLoginData(body):void{
+  postLoginData(body):Observable<any>{
     console.log('posted from data service');
-    this.http.post('/api/auth/login', body,this.options ).subscribe(
-      dat => console.log(dat)
-    );
+    return this.http.post('/api/auth/login', body,this.options );
 
   }
-  postRegData(body):void{
+  postRegData(body):Observable<any>{
     console.log('posted from data service');
-    this.http.post('/api/auth/register', body,this.options ).subscribe(
-      dat => console.log(dat)
-    );
+    return this.http.post('/api/auth/register', body,this.options );
+
 
   }
 

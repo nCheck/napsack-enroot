@@ -1,0 +1,62 @@
+.sidebar{
+    background-color: #80D3ED;
+    width: 25vw;
+  }
+  .mainpage{
+    background-color: white;
+  }
+  .box {
+    height: 100vh;
+      display:flex;
+      flex-direction:column;
+  
+  }
+  #grid {
+    height: 100%;
+    position: relative;
+    display: grid;
+    grid-gap: 10px;
+     grid-template-rows: 20% 20% 20% 20% 20%;
+  }
+  
+  
+  .side-panel{
+    height:40%;
+    align-items:center;
+     display:flex;
+     justify-content: center;
+  }
+  
+  .loginBackground{
+    background-image: linear-gradient(-60deg, #186B95, #54C6FF);
+  }
+  
+  .logOut{
+    background-color: #186B95;
+    color:white;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 7px 7px 7px 7px;
+  }
+  
+  .logOut:hover {
+      background-color: white;
+      color: #54C6FF;
+      border-radius: 10px;
+  }
+  
+  .sidebar-names{
+    color:white;
+    cursor:pointer;
+  }
+  
+  .sidebar-names:hover{
+    color: #186B95;
+    text-decoration: underline;
+  }
+  @media only screen and (max-width: 700px) {
+    .sidebar{
+      background-color: #80D3ED;
+      width: 100vw;
+    }
+  }

@@ -6,7 +6,8 @@ import { DataService } from '../data.service';
   styleUrls: ['./collector-wallet.component.css']
 })
 export class CollectorWalletComponent implements OnInit {
-
+  addition:String="green";
+  subtraction:String="red";
   constructor() { }
 
   ngOnInit() {

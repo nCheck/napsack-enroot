@@ -18,6 +18,8 @@ import { CollectorRequestComponent } from './collector-request/collector-request
 import { CollectorWalletComponent } from './collector-wallet/collector-wallet.component';
 import { DonatorQrcodeComponent } from './donator-qrcode/donator-qrcode.component';
 import { DonatorLeaderboardComponent } from './donator-leaderboard/donator-leaderboard.component';
+import { DonatorMainpageComponent } from './donator-mainpage/donator-mainpage.component';
+import { CollectorMainpageComponent } from './collector-mainpage/collector-mainpage.component';
 import { DonatorEventsComponent } from './donator-events/donator-events.component';
 
 export const routes: Routes = [
@@ -41,7 +43,7 @@ export const routes: Routes = [
 
       {
         path: '',
-        component: DonatorDonateComponent,
+        component: DonatorMainpageComponent,
       },
       {
         path: 'donate',
@@ -84,7 +86,7 @@ export const routes: Routes = [
 
       {
         path: '',
-        component: CollectorComponent,
+        component: CollectorMainpageComponent,
       },
       {
         path: 'verify',

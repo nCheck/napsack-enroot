@@ -14,7 +14,7 @@
 
     </ul>
     <form class="form-inline my-2 my-lg-0">
-
+        <button (click)="reroute()" class="btn btn-outline-success my-2 my-sm-0 btn-lg" type="submit">LogOut</button>
     </form>
   </div>
 </nav>
@@ -33,11 +33,13 @@
             <ng-sidebar  [(opened)]="_opened" [(mode)]="slide"  style="background-color:aliceblue;">
 
               <div class="box sidebar">
-                  <button type="button" class="btn btn-secondary btn-lg btn-block"><p><i class="fa fa-recycle"></i> Recycle</p></button>
-                  <button type="button" class="btn btn-secondary btn-lg btn-block"><p> <i class="fa fa-list-alt"></i>Transaction</p></button>
-                  <button type="button" class="btn btn-secondary btn-lg btn-block"><p><i class="fas fa-trophy"></i>Quest</p></button>
-                  <button type="button" class="btn btn-secondary btn-lg btn-block"><p> <i class="fas fa-shopping-cart"></i>Shops Around You</p></button>
-                  <button type="button" class="btn btn-secondary btn-lg btn-block"><p><i class="fas fa-wallet"></i> Wallet</p></button>
+                  <a href="donor/donate"><button type="button" class="btn btn-secondary btn-lg btn-block"><p><i class="fa fa-recycle"></i> Recycle</p></button></a> 
+                  <a href="donor/transact"> <button type="button" class="btn btn-secondary btn-lg btn-block"><p> <i class="fa fa-list-alt"></i>Transaction</p></button></a>
+                  <a href="donor/quest"><button type="button" class="btn btn-secondary btn-lg btn-block"><p><i class="fas fa-trophy"></i>Quest</p></button></a> 
+                  <a href="donor/wallet"><button type="button" class="btn btn-secondary btn-lg btn-block"><p><i class="fas fa-wallet"></i> Wallet</p></button></a> 
+                  <a href="donor/leaderboard"><button type="button" class="btn btn-secondary btn-lg btn-block"><p><i class="fas fa-list-ol"></i> LeaderBoard</p></button></a> 
+                  <a href="donor/maps"><button type="button" class="btn btn-secondary btn-lg btn-block"><p> <i class="fas fa-shopping-cart"></i>Shops Around You</p></button></a> 
+
                 
                 
                 

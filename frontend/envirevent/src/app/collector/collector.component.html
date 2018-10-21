@@ -1,5 +1,61 @@
-<p>
-  collector works!
-</p>
 
-<router-outlet></router-outlet>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- <a class="navbar-brand" href="/doctor">Dr.{{ this.username }}</a> -->
+    <button (click)="_toggleSidebar()"  class="btn btn-outline-secondary btn-lg">Holla</button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" (click)="isActive = !isActive">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngClass]="{show : isActive}">
+      <ul class="navbar-nav mr-auto">
+  
+          <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+          <!-- <li>{{ filtername }}</li> -->
+  
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+          <button (click)="reroute()" class="btn btn-outline-success my-2 my-sm-0 btn-lg" type="submit">LogOut</button>
+      </form>
+    </div>
+  </nav>
+  
+  
+  <div class="container-fluid" >
+    <div class="row">
+      <!-- <div class="box col-lg-3 sidebar col-3">
+  
+      </div> -->
+      <div class="box  mainpage col-12 " style="padding:0px;">
+  
+          <ng-sidebar-container>
+   
+              <!-- A sidebar -->
+              <ng-sidebar  [(opened)]="_opened" [(mode)]="slide"  style="background-color:aliceblue;">
+  
+                <div class="box sidebar">
+                    <a href="collector/verify"><button type="button" class="btn btn-secondary btn-lg btn-block"><p><i class="fa fa-recycle"></i> Verify</p></button></a> 
+                    <a href="collector/request"> <button type="button" class="btn btn-secondary btn-lg btn-block"><p> <i class="fa fa-list-alt"></i>Request</p></button></a>
+                    <a href="collector/wallet"><button type="button" class="btn btn-secondary btn-lg btn-block"><p><i class="fas fa-wallet"></i> Wallet</p></button></a> 
+
+  
+                  
+                  
+                  
+                                  
+                </div>
+  
+              </ng-sidebar>
+  
+              <!-- Page content -->
+              <div ng-sidebar-content>
+                            <!-- HERE WE WILL HAVE CCONTENT -->
+                            <router-outlet></router-outlet>
+              </div>
+         
+            </ng-sidebar-container>
+        <!--  -->
+      </div>
+    </div>
+  </div>
+  
+  

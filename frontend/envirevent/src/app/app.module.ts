@@ -26,6 +26,8 @@ import { CollectordetailsComponent } from './collectordetails/collectordetails.c
 import { DonatorLeaderboardComponent } from './donator-leaderboard/donator-leaderboard.component';
 import {ProgressBarModule} from 'angular-progress-bar';
 import { DonatorEventsComponent } from './donator-events/donator-events.component';
+import { DonatorMainpageComponent } from './donator-mainpage/donator-mainpage.component';
+import { CollectorMainpageComponent } from './collector-mainpage/collector-mainpage.component';
 
 // import * as RX from "rxjs/Observable";
 
@@ -48,6 +50,8 @@ import { DonatorEventsComponent } from './donator-events/donator-events.componen
     DonatorQrcodeComponent,
     CollectordetailsComponent,
     DonatorLeaderboardComponent,
+    DonatorMainpageComponent,
+    CollectorMainpageComponent,
     DonatorEventsComponent,
   ],
   imports: [
