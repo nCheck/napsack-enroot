@@ -1,7 +1,27 @@
-<qr-scanner
+<!-- <qr-scanner
         [debug]="false"
         [canvasWidth]="1080" 
         [canvasHeight]="720" 
         [stopAfterScan]="true" 
         [updateTime]="500" > 
-</qr-scanner>
+</qr-scanner> -->
+<!-- <zxing-scanner [formats]="allowedFormats"></zxing-scanner> -->
+<!-- <div fxLayout="column" fxFlexAlign="center">
+                <div  fxFlex="20" fxFill>
+                <md-input-container fxFill><textarea fxFill mdInput placeholder="qrr-value (URL or DATA URL)" [(ngModel)]="value"></textarea></md-input-container>
+                <br/>
+            
+                </div>
+                <div  fxFlex="60" fxFill>
+                <ng2-qrcode-reader (result)="render($event)" [qrr-show]="showQRCode" [qrr-value]="value" [qrr-type]="elementType"></ng2-qrcode-reader>
+                </div>
+                <p>Result</p>
+                <div #result  fxFlex="20" fxFill>
+                </div>
+                </div> -->
+                <!-- <ngx-barcode [bc-value]="value" [bc-display-value]="true"></ngx-barcode> -->
+
+                <barcode-scanner-livestream type="code_128" (valueChanges)="onValueChanges($event)"></barcode-scanner-livestream>
+                <div [hidden]="!barcodeValue">
+                    {{barcodeValue}}
+                </div>
