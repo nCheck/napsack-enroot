@@ -131,9 +131,17 @@ module.exports.ongoingEvent=(req,res)=>{
 module.exports.sendBal=(req,res)=>{
 	User.findOne({username:req.user.username},(err,doc)=>{
 		
-	if(doc.role != 'Collector')
+		if(err)
+		{
+			console.log(err+" sd")
+		}
+		if(doc==null)
+		res.json({status:'failed'})
+	if(doc.role === 'Customer')
 	{
 		Customer.findById(doc.customerId,(err,docc)=>{
+			if(err)
+			console.log(err+" no user")
 			res.json({balance:docc.wallet,status:'ok'})
 		})
 	}
