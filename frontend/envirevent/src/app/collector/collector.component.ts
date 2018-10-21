@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 @Component({
   selector: 'app-collector',
   templateUrl: './collector.component.html',
@@ -15,7 +15,10 @@ export class CollectorComponent implements OnInit {
     console.log("hi");
     console.log(this._opened)
   }
-  constructor() { }
+  reroute():void{
+    this.router.navigate(['/login']);
+  }
+  constructor( private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
   }
