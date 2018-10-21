@@ -14,7 +14,7 @@ export class CollectorVerifyComponent implements OnInit {
   public val: String;
 
   constructor(data: DataService) {
-  
+
       }
 
   ngOnInit() 

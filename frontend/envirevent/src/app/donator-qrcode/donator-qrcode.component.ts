@@ -7,10 +7,10 @@ import { DataService } from '../data.service';
 })
 
 export class DonatorQrcodeComponent implements OnInit {
-  public myAngular: string = null;
+  public myAngular: String = null;
 
-  constructor(data:DataService) {
-    //  this.myAngular = this.data.u
+  constructor(data: DataService) {
+       this.myAngular = data.uniqueValue;
    }
 
   ngOnInit() {
