@@ -41,14 +41,7 @@ var tranSchema = mongoose.Schema({
 
 
 
-tranSchema.pre('save' , (doc)=>{
-    if ( ! doc.isPending ){
-        Dump.create({item  : doc.items} , (err , docc)=>{
-            doc.tempId = docc._id
-            doc.save()
-        })
-    }
-})
+
 
 
 
