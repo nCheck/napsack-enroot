@@ -3,7 +3,6 @@ const User = require('../model/user')
 const Transaction = mongoose.model('Transaction')
 const Collector = mongoose.model('Collector')
 const Customer = mongoose.model('Customer')
-const Code = mongoose.model('Code')
 
 const DATA = {
     "Glass Bottle": {
@@ -32,22 +31,6 @@ const DATA = {
         "count" : 0
     }
 }
-
-
-findTrans = (tid)=>{
-    return new Promise( (resolve, reject)=>{
-        Transaction.findOne({_id : tid} , (err , doc)=>{
-            if(err){
-                reject(err)
-            }else{
-                resolve(doc)
-            }
-        })
-    })    
-}
-
-
-
 
 
 
@@ -84,7 +67,7 @@ calTransac = (items)=>{
 
 //Hardcode points, points can be searched later
 
-module.exports.makeTrans = (data, user)=>{//data is req.body
+makeTrans = (data, user)=>{//data is req.body
     items = [ { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012a') , count : data["Glass Bottle"] } , 
               { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012c') , count : data["TetraPacks"] } ,
               { item : mongoose.Types.ObjectId('5bcb03c64f37e84f9ac5012b') , count : data["Plastic Bottle"] } ,
@@ -100,8 +83,9 @@ module.exports.makeTrans = (data, user)=>{//data is req.body
         items : items,
         transacValue : transacValue,
         customerId : mongoose.Types.ObjectId(user.customerId),
+        collectorId:mongoose.Types.ObjectId(user.collectorId)
     }
-    
+    return new Promise( (resolve , reject)=>{
         Transaction.create(query , (err, doc)=>{
             if (err){
                 reject(err)
@@ -110,7 +94,7 @@ module.exports.makeTrans = (data, user)=>{//data is req.body
                 resolve(doc)
             }
         })
-    
+    } )
 }
 
 updateTrans = (data, tid)=>{
@@ -122,6 +106,13 @@ updateTrans = (data, tid)=>{
             ]
             
     transacValue = calTransac(items)
+
+    query =  {
+        transacDate : Date.now(),
+        items : items,
+        transacValue : transacValue,
+        isPending : false
+    }
 
     return new Promise( (resolve, reject)=>{
         Transaction.findOne({_id : tid} , (err , doc)=>{
@@ -147,17 +138,16 @@ updateInventory=(r,collector,transaction)=>{
         trans.findById(transaction._id,(err,docc)=>{
             invent.forEach(items=>{
                 docc.items.forEach(ditems=>{
-                    
+                    if(items['item']===ditems['item'])
+                    {
                         items['count']+=ditems['count'];
-                    
+                    }
                 })
                 
             })
         })
     })
     )}
-
-
 getAllTransactions = (uid, role)=>{
     return new Promise( (resolve , reject)=>{
         if (role == 'Customer'){
@@ -185,18 +175,12 @@ getAllTransactions = (uid, role)=>{
 }
 
 
-
-
-
-
-
-
 module.exports = {
     findUser
 }
 
 ///////////////////////EXPORTS
-//GENERATING TRANSACTION FOR CUSTOMER
+
 module.exports.generateTransaction = async(req , res)=>{
     var username = 'ncheck'
     console.log('req is ', req.body)
@@ -204,41 +188,23 @@ module.exports.generateTransaction = async(req , res)=>{
     var trans = await makeTrans(req.body , user)
     user.save()
     trans.save()
-    Code.create({transId : trans._id} , (err , doc)=>{
-        res.json({id : doc.code , status : 'OK'})
-    })
-    
+    res.json(trans)
 
 }
-
-
-module.exports.verifyCode = async(req , res)=>{
-    var code = req.body.code
-    Code.find({code : code} , async(err , doc)=>{
-        if (err){
-            res.send({status : false })
-        }
-        else{
-            var trans = await findTrans( doc.transId )
-            res.json({status : true , trans  : trans })
-        }
-    } )
-}
-
 
 module.exports.verifyTransaction = async(req , res)=>{
     var username = 'shreya'
-    var code = req.body.code
-
     console.log('req is ', req.body)
     var user = await findUser(username)
-    var trans = await updateTrans(req.body, req.body.tid )
+    var trans = await updateTrans(req.body, req.body.tid , user)
     var inventory = await updateInventory(req.body,user.collectorId,trans)
     var uQuests = user.quests
+    for(i = 0 ; i < uQuests.length ; i++){
+        for( j = 0 ; j < trans.items.length ; j++){
 
-    res.json({status : true})
-
-
+        }
+    }
+    res.json(trans)
     
 }
 
