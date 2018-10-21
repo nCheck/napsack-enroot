@@ -64,6 +64,7 @@ regClick():void{
   this.data.postRegData(this.dataPOST);
   this.dataPOST={};
   console.log("register clicked");
+this.logSwap();
 
 }
 onSelectCheckBox(id:Number){
