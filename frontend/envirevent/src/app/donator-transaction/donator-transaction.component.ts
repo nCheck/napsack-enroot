@@ -7,8 +7,8 @@ import { DataService } from '../data.service';
 })
 export class DonatorTransactionComponent implements OnInit {
 
-  public show:boolean = false;
-  public showA:boolean = false;
+  public show: boolean = false;
+  public showA: boolean = false;
  
   constructor(private data: DataService) {
 
