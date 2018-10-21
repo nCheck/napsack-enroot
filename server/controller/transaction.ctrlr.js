@@ -3,6 +3,8 @@ const User = require('../model/user')
 const Transaction = mongoose.model('Transaction')
 const Collector = mongoose.model('Collector')
 const Customer = mongoose.model('Customer')
+const Code = mongoose.model('Code')
+
 
 const DATA = {
     "Glass Bottle": {
@@ -33,7 +35,17 @@ const DATA = {
 }
 
 
-
+findTrans = (tid)=>{
+    return new Promise( (resolve, reject)=>{
+        Transaction.findOne({_id : tid} , (err , doc)=>{
+            if(err){
+                reject(err)
+            }else{
+                resolve(doc)
+            }
+        })
+    })    
+}
 
 
 findUser = (username)=>{
@@ -144,10 +156,11 @@ updateTrans = (data, tid)=>{
 //                     }
 //                 })
                 
-//             })
-//         })
-//     })
-//     )}
+            })
+        })
+    })
+    )}
+
 getAllTransactions = (uid, role)=>{
     return new Promise( (resolve , reject)=>{
         if (role == 'Customer'){
@@ -188,8 +201,24 @@ module.exports.generateTransaction = async(req , res)=>{
     var trans = await makeTrans(req.body , user)
     user.save()
     trans.save()
-    res.json(trans)
+    Code.create({transId : trans._id} , (err,doc)=>{
+        res.json({ code : doc.code , status : 'OK' })
+    })
+    
 
+}
+
+module.exports.verifyCode = async(req , res)=>{
+    var code = req.body.code
+    Code.find({code : code} , async(err , doc)=>{
+        if (err){
+            res.send({status : false })
+        }
+        else{
+            var trans = await findTrans( doc.transId )
+            res.json({status : true , trans  : trans })
+        }
+    } )
 }
 
 module.exports.verifyTransaction = async(req , res)=>{
