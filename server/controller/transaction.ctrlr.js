@@ -131,23 +131,23 @@ updateTrans = (data, tid)=>{
     })
 }
 
-updateInventory=(r,collector,transaction)=>{
-    Collector.findById(collector.populate('transactions').exec((err,doc)=>{
-        var trans=doc.transactions;
-        var invent=doc.inventory
-        trans.findById(transaction._id,(err,docc)=>{
-            invent.forEach(items=>{
-                docc.items.forEach(ditems=>{
-                    if(items['item']===ditems['item'])
-                    {
-                        items['count']+=ditems['count'];
-                    }
-                })
+// updateInventory=(r,collector,transaction)=>{
+//     Collector.findById(collector.populate('transactions').exec((err,doc)=>{
+//         var trans=doc.transactions;
+//         var invent=doc.inventory
+//         trans.findById(transaction._id,(err,docc)=>{
+//             invent.forEach(items=>{
+//                 docc.items.forEach(ditems=>{
+//                     if(items['item']===ditems['item'])
+//                     {
+//                         items['count']+=ditems['count'];
+//                     }
+//                 })
                 
-            })
-        })
-    })
-    )}
+//             })
+//         })
+//     })
+//     )}
 getAllTransactions = (uid, role)=>{
     return new Promise( (resolve , reject)=>{
         if (role == 'Customer'){
@@ -197,7 +197,7 @@ module.exports.verifyTransaction = async(req , res)=>{
     console.log('req is ', req.body)
     var user = await findUser(username)
     var trans = await updateTrans(req.body, req.body.tid , user)
-    var inventory = await updateInventory(req.body,user.collectorId,trans)
+    // var inventory = await updateInventory(req.body,user.collectorId,trans)
     var uQuests = user.quests
     for(i = 0 ; i < uQuests.length ; i++){
         for( j = 0 ; j < trans.items.length ; j++){
@@ -231,6 +231,78 @@ module.exports.dummyPost = (req , res)=>{
     console.log(req.body)
     res.send("Done")
 }
+
+module.exports.sendBal=(req,res)=>{
+	User.findOne({username:req.user.username},(err,doc)=>{
+		
+		if(err)
+		{
+			console.log(err+" sd")
+		}
+		if(doc==null)
+		res.json({status:'failed'})
+	if(doc.role === 'Customer')
+	{
+		Customer.findById(doc.customerId,(err,docc)=>{
+			if(err)
+			console.log(err+" no user")
+			res.json({balance:docc.wallet,status:'ok'})
+		})
+	}
+			
+		else
+		{
+			Collector.findById(doc.collectorId,(err,docc)=>{
+				res.json({balance:docc.wallet,status:'ok'})
+			})
+			
+
+		}
+		})
+}
+
+module.exports.spend=(req,res)=>{
+	User.findOne({username:req.user.username},(err,doc)=>{
+		if(err)
+		console.log(err)
+		if(doc==null)
+		res.json({status:'no id found'})
+		if(doc.role === 'Customer')
+		{
+			Customer.findById(doc.customerId,(err,docc)=>{
+				if(err)
+				console.log(err+" no user")
+				else{
+				docc.wallet-=req.amt
+					res.json({balance:docc.wallet,status:'ok'})
+					
+	
+				}
+			})
+		}
+				
+			else
+			{
+				Collector.findById(doc.collectorId,(err,docc)=>{
+					if(err)
+					console.log(err)
+					if(docc==null)
+					res.json({Status:'invalid balance'})
+
+					else{
+					
+							res.json({balance:docc.wallet,status:'ok'})
+				
+						}
+				})
+				
+	
+			}
+	})
+}
+
+
+
 
 
 
