@@ -1,6 +1,7 @@
 import { Component, ViewChild, ViewEncapsulation, OnInit } from '@angular/core';
 import {QrScannerComponent} from 'angular2-qrscanner';
 import { DataService } from '../data.service';
+import { Data } from '@angular/router';
 @Component({
   selector: 'app-collector-verify',
   templateUrl: './collector-verify.component.html',
@@ -9,16 +10,18 @@ import { DataService } from '../data.service';
 })
 export class CollectorVerifyComponent implements OnInit {
 
-    public show: boolean = false;
+  public numKey: String;
+  public val: String;
 
-  constructor() { }
+  constructor(data: DataService) {
+  
+      }
 
-  ngOnInit() {
-    }
+  ngOnInit() 
+  {
 
-    toggle() 
-    {
-        this.show = !this.show;
-    }
+  }
+
+
 
 }
