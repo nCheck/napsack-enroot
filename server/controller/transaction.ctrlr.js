@@ -156,10 +156,10 @@ updateTrans = (data, tid)=>{
 //                     }
 //                 })
                 
-            })
-        })
-    })
-    )}
+    //         })
+    //     })
+    // })
+    // )}
 
 getAllTransactions = (uid, role)=>{
     return new Promise( (resolve , reject)=>{
