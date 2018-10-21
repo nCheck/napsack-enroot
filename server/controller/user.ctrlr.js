@@ -159,9 +159,41 @@ module.exports.sendBal=(req,res)=>{
 
 module.exports.spend=(req,res)=>{
 	User.findOne({username:req.user.username},(err,doc)=>{
-		
-		doc.wallet-=req.balance;
-		res.json({amountLeft:doc.wallet,status:'ok'})
+		if(err)
+		console.log(err)
+		if(doc==null)
+		res.json({status:'no id found'})
+		if(doc.role === 'Customer')
+		{
+			Customer.findById(doc.customerId,(err,docc)=>{
+				if(err)
+				console.log(err+" no user")
+				else{
+				docc.wallet-=req.amt
+					res.json({balance:docc.wallet,status:'ok'})
+					
+	
+				}
+			})
+		}
+				
+			else
+			{
+				Collector.findById(doc.collectorId,(err,docc)=>{
+					if(err)
+					console.log(err)
+					if(docc==null)
+					res.json({Status:'invalid balance'})
+
+					else{
+					
+							res.json({balance:docc.wallet,status:'ok'})
+				
+						}
+				})
+				
+	
+			}
 	})
 }
 
